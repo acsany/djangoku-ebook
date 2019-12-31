@@ -1,6 +1,7 @@
 = Djangoku: How to deploy Django to Heroku
 :doctype: book
 :toc:
+:source-highlighter: pygments
 :tip-caption: 💡
 
 == Intro
