@@ -1,18 +1,17 @@
-Djangoku: How to deploy Django to Heroku
-========================================
+= Djangoku: How to deploy Django to Heroku
 :doctype: book
 :toc:
+:tip-caption: 💡
 
-= Preface
+== Preface
 // Why this book?
 
 Every chapter closes with a checklist.
 That way you can quickly reference important steps, without the noise.
 
-= What you will learn
+// TODO: == What you will learn
 
-= What you need to start
-
+== What you need to start
 Since this book tackles a rather specific use case, I assume that you have basic knowledge in Python, Django and GIT.
 That said the setup you will encounter in the next chapters is kept as basic as possible, so even beginners can follow along.
 
@@ -27,24 +26,24 @@ I want you to succeed and finish this book.
 If your code does not work as epxected or you encounter a roadblock, don’t hesitate to contact me and I will try to help out.
 // TODO: Add email address
 
-== A word about operating systems
+=== A word about operating systems
 The screenshots you will see in this book are taken on a Mac.
 But you can follow this book on Windows and Linux aswell.
 
-== Prerequisites
+=== Prerequisites
 * Python 3.8+
 * Git
 * Postgres 11+
 * GitLab OR GitHub Account
 * Heroku Account
 
-=== Python and Git
+==== Python and Git
 Please make sure you have Python and Git installed on your system.
 The easiest way is to google e.g. `install python 3 on mac` and `install git on mac` and follow the best results along.
 Chances are that Python and Git are already available on your system.
 While the git version is not that important, your Python version should be greater than version 3.
 
-=== Postgres
+==== Postgres
 Generally speaking you can work with any database that Django and heroku support.
 (Note: https://devcenter.heroku.com/articles/sqlite3[SQLite] is not supported).
 This book is based on Postgres, because you don’t need any additional elements on heroku and it is easy to setup on Django.
@@ -53,23 +52,23 @@ While it is alway a good idea to stay recent when starting new projects, you may
 To see if your version works with heroku, see https://devcenter.heroku.com/articles/heroku-postgresql#version-support[this list].
 
 
-=== GitLab or GitHub account
+==== GitLab or GitHub account
 // TODO: Add actual chapter
 In chapter X I will provide two variants of working with a remote repository.
 You only need one account.
 So you can work either with GitLab or GitHub.
 
-=== Heroku account and Heroku CLI
+==== Heroku account and Heroku CLI
 Last but not least, you obviously need an heroku account to deploy your Django app on heroku.
 The good thing about heroku is, that it is free (how we use it) and scalable (if needed).
 
 Please make also sure that you have installed the Heroku Commandline Interface (CLI).
 
 
-== Checklist
+=== Checklist
 *Objective:* All prerequisites are fulfilled.
 
-=== ✔︎ Python 3+ is installed
+==== ✔︎ Python 3+ is installed
 .Terminal (any new window)
 [source,shell]
 ----
@@ -77,7 +76,10 @@ python --version
 ----
 -> Outputs python version 3+
 
-=== ✔︎ Git is installed
+[TIP]
+Depending on how you installed Python 3, you have to use `python3 --version` instead.
+
+==== ✔︎ Git is installed
 .Terminal (any new window)
 [source,shell]
 ----
@@ -85,7 +87,7 @@ git --version
 ----
 -> Outputs any git version
 
-=== ✔︎ Postgres is installed
+==== ✔︎ Postgres is installed
 .Terminal (any new window)
 [source,shell]
 ----
@@ -93,11 +95,11 @@ postgres --version
 ----
 -> Outputs any postgres version. Ideally 11+
 
-=== ✔︎ GitLab or GitHub account created
+==== ✔︎ GitLab or GitHub account created
 
-=== ✔︎ Heroku account created
+==== ✔︎ Heroku account created
 
-=== ✔︎ Heroku CLI installed
+==== ✔︎ Heroku CLI installed
 .Terminal (any new window)
 [source,shell]
 ----
