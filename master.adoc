@@ -16,4 +16,6 @@ include::chapters/what_you_will_learn.adoc[]
 
 include::chapters/what_you_need_to_start.adoc[]
 
+== Starting the project
 
+include::chapters/starting_the_project.adoc[]

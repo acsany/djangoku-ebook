@@ -1,0 +1,200 @@
+Now that all the prerequisites are fullfilled it is time to start the _real_ work.
+We will create our project folder, a local Git repository and a virtual environment.
+Then we will add Django to the mix.
+
+=== Beginning with the basics
+
+Git will keep track of our file versioning and will be our gateway to distribute the files to GitLab and Heroku later.
+By using a virtual environment we have an isolated sandbox and don’t get confused with Python versions and modules that may be installed on the operating system already.
+Both Git and a virtual environment are mandatory for a streamlined Heroku workflow.
+But it is generally a good practice to start any Python projects that way.
+
+[INFO]
+In this book the project will be called _"djangoku_dev"_ and you will see that the root path to the project is `~/Dropbox/GitMac/djangoku/djangoku_dev`.
+Obviously you will have your custom root path and maybe a more suitable project name –– Keep in mind that you have to adjust some commands accordingly.
+
+==== Create the project folder
+
+Create a project folder and navigate with the terminal to it:
+
+.Terminal (any window)
+[source, shell]
+----
+mkdir ~/Dropbox/GitMac/djangoku/djangoku_dev
+cd ~/Dropbox/GitMac/djangoku/djangoku_dev
+----
+
+[TIP]
+If you are on the Mac, there is an easy way to do this:
+Create the project folder in the Finder, open a new Terminal window, write `cd`, drag the folder from the Finder into the Terminal window and hit _Enter_
+
+==== Initiate a new Git repository
+
+Initiate a new Git repository:
+
+.Terminal (same window)
+[source, shell]
+----
+git init
+----
+
+==== Create the virtual environment
+
+[NOTE]
+If you are confused about virtual environments (as I still am sometimes), check out this great article on https://realpython.com/python-virtual-environments-a-primer/[Real Python] to get an overview.
+
+[INFO]
+In this book the virtual environment will be called _virtualenv_.
+You can name your virtual environment any way you want and adjust the commands accordingly.
+
+Create a new virtualenvironment in your project folder and activate it:
+
+.Terminal (same window)
+[source, shell]
+----
+python3 -m venv virtualenv
+source virtualenv/bin/activate
+----
+
+You can see that you have activated the virtual environment if the project foldername is wrapped in parenthesis e.g. _(djangoku_dev)_
+
+This virtual environment folder is needed only locally.
+GitLab and Heroku will create their own environments later.
+Therefore it is important to not track the virtual environment folder with Git.
+
+Create a _.gitignore_ file and add _virtualenv_ to it:
+
+.Terminal (same window)
+[source, shell]
+----
+echo virtualenv > .gitignore
+----
+
+==== Adding your first commit
+
+Now that we have created the base layer for our project, we should do our first commit.
+
+Stage all changed files – that’s just the _.gitignore_ file as we ignored everything else – and commit them:
+
+.Terminal (same window)
+[source, shell]
+----
+git add .
+git commit -m "Start Djangoku 🌱"
+----
+
+=== Django. Finally!
+
+After all this preparation and groundwork it is finally time to add Django.
+
+==== Install Django
+
+Make sure the virtualenvironment is still activated by checking if the project folder is wrapped in parenthesis.
+
+Install the Django module:
+
+.Terminal (same window)
+[source, shell]
+----
+pip install django
+----
+
+==== Start the Django project
+
+Now that the Django module was installed, we can start the actual Django project.
+Note that the command has a `.` at the end – this will make sure we create the Django project in the current directory and not create a new one.
+
+[INFO]
+In this book the Django project will be called _djangoku_.
+You can call your django project differently and adjust the commands accordingly.
+
+Start the Django project:
+
+.Terminal (same window)
+[source, shell]
+----
+django-admin.py startproject djangoku .
+----
+
+If you look into your root project folder you should see that a file called _manage.py_ and a _djangoku_ folder were added.
+
+Run Django:
+
+.Terminal (same window)
+[source, shell]
+----
+python manage.py runserver
+----
+
+After you have run the command, you should see an address like this: `http://127.0.0.1:8000/`.
+Open this in your browser and see if Django is running successfully.
+
+==== Ignore the SQLite database
+
+Django creates an SQLite database automatically.
+We will not need this file and delete it later, because we will work with a PostgreSQL database.
+However, we can ignore this for now.
+And by ignoring, I mean: .gitignoring it.
+Note that the command has two `>`, because we want to append a line to the _.gitignore_ file.
+
+[NOTE]
+There are other Django projects, where a SQLite database is good enough.
+Even then you should https://github.com/github/gitignore/blob/db0ef78b5ad1d3caf4cab3240467562360885613/Python.gitignore[always ignore] _.sqlite3_ files.
+
+
+.Terminal (same window)
+[source, shell]
+----
+echo *.sqlite3 >> .gitignore
+----
+
+==== Commit
+
+Track the new files in Git:
+
+.Terminal (same window)
+[source, shell]
+----
+git add .
+git commit -m "Add Django project 🤠"
+----
+
+=== Checklist
+*Objective*: The project is tracked via Git and Django is running in an activated virtual environment.
+
+==== ✔︎ Project is tracked via Git
+
+.Terminal (same window)
+[source,shell]
+----
+git log
+----
+-> Outputs the last commit messages
+
+==== ✔︎ Virtual environment is activated
+
+.Terminal (same window)
+-> The root project folder is wrapped in parenthesis in the Terminal.
+
+==== ✔︎ Virtual environment uses the correct Python
+
+.Terminal (same window)
+[source,shell]
+----
+which python
+----
+-> Outputs a path that leads into the virtual environment folder.
+
+==== ✔︎ Django is installed
+
+.Terminal (same window)
+[source,shell]
+----
+python -m django --version
+----
+-> Outputs Django version.
+
+==== ✔︎ Django works
+.Browser (any window)
+-> Visit the URL that Django showed on startup and see if it shows the Django success message.
+
