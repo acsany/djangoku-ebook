@@ -1,3 +1,5 @@
+== What you need to start
+
 Since this book tackles a rather specific use case, I assume that you have basic knowledge in Python, Django and GIT.
 That said the setup you will encounter in the next chapters is kept as basic as possible, so even beginners can follow along.
 

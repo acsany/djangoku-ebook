@@ -1,3 +1,5 @@
+== Starting the project
+
 Now that all the prerequisites are fullfilled it is time to start the _real_ work.
 We will create our project folder, a local Git repository and a virtual environment.
 Then we will add Django to the mix.
