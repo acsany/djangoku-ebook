@@ -55,7 +55,7 @@ Please make also sure that you have installed the Heroku Commandline Interface (
 *Objective:* All prerequisites are fulfilled.
 
 ==== ✔︎ Python 3+ is installed
-.Terminal (any new window)
+.Terminal (any window)
 [source,shell]
 ----
 python --version
@@ -66,7 +66,7 @@ python --version
 Depending on how you installed Python 3, you have to use `python3 --version` or even `python3.8 --version` instead.
 
 ==== ✔︎ Git is installed
-.Terminal (any new window)
+.Terminal (any window)
 [source,shell]
 ----
 git --version
@@ -74,7 +74,7 @@ git --version
 -> Outputs any git version
 
 ==== ✔︎ PostgreSQL is installed
-.Terminal (any new window)
+.Terminal (any window)
 [source,shell]
 ----
 postgres --version
@@ -86,7 +86,7 @@ postgres --version
 ==== ✔︎ Heroku account created
 
 ==== ✔︎ Heroku CLI installed
-.Terminal (any new window)
+.Terminal (any window)
 [source,shell]
 ----
 heroku --version
