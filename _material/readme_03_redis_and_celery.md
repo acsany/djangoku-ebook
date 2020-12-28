@@ -1,1 +1,0 @@
-# Djangoku - Adding Redis & Celery
