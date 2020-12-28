@@ -1,0 +1,578 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Starting the project · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.16">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="what_you_need_to_start.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="what_you_will_learn.html">
+            
+                <a href="what_you_will_learn.html">
+            
+                    
+                    What you will learn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="what_you_need_to_start.html">
+            
+                <a href="what_you_need_to_start.html">
+            
+                    
+                    What you need to start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="starting_the_project.html">
+            
+                <a href="starting_the_project.html">
+            
+                    
+                    Starting the project
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Starting the project</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="sect1">
+<h2 id="_starting_the_project">Starting the project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that all the prerequisites are fullfilled it is time to start the <em>real</em> work.
+We will create our project folder, a local Git repository and a virtual environment.
+Then we will add Django to the mix.</p>
+</div>
+<div class="sect2">
+<h3 id="_beginning_with_the_basics">Beginning with the basics</h3>
+<div class="paragraph">
+<p>Git will keep track of our file versioning and will be our gateway to distribute the files to GitLab and Heroku later.
+By using a virtual environment we have an isolated sandbox and don’t get confused with Python versions and modules that may be installed on the operating system already.
+Both Git and a virtual environment are mandatory for a streamlined Heroku workflow.
+But it is generally a good practice to start any Python projects that way.</p>
+</div>
+<div class="paragraph">
+<p>In this book the project will be called <em>&quot;djangoku_dev&quot;</em> and you will see that the root path to the project is <code>~/Dropbox/GitMac/djangoku/djangoku_dev</code>.
+Obviously you will have your custom root path and maybe a more suitable project name –– Keep in mind that you have to adjust some commands accordingly.</p>
+</div>
+<div class="sect3">
+<h4 id="_create_the_project_folder">Create the project folder</h4>
+<div class="paragraph">
+<p>Create a project folder and navigate with the terminal to it:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (any window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">mkdir ~/Dropbox/GitMac/djangoku/djangoku_dev
+cd ~/Dropbox/GitMac/djangoku/djangoku_dev</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you are on the Mac, there is an easy way to do this:
+Create the project folder in the Finder, open a new Terminal window, write <code>cd</code>, drag the folder from the Finder into the Terminal window and hit <em>Enter</em>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_initiate_a_new_git_repository">Initiate a new Git repository</h4>
+<div class="paragraph">
+<p>Initiate a new Git repository:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git init</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_the_virtual_environment">Create the virtual environment</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are confused about virtual environments (as I still am sometimes), check out this great article on <a href="https://realpython.com/python-virtual-environments-a-primer/" target="_blank">Real Python</a> to get an overview.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this book the virtual environment will be called <em>virtualenv</em>.
+You can name your virtual environment any way you want and adjust the commands accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Create a new virtualenvironment in your project folder and activate it:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python3 -m venv virtualenv
+source virtualenv/bin/activate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see that you have activated the virtual environment if the project foldername is wrapped in parenthesis e.g. <em>(djangoku_dev)</em></p>
+</div>
+<div class="paragraph">
+<p>This virtual environment folder is needed only locally.
+GitLab and Heroku will create their own environments later.
+Therefore it is important to not track the virtual environment folder with Git.</p>
+</div>
+<div class="paragraph">
+<p>Create a <em>.gitignore</em> file and add <em>virtualenv</em> to it:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">echo virtualenv &gt; .gitignore</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adding_your_first_commit">Adding your first commit</h4>
+<div class="paragraph">
+<p>Now that we have created the base layer for our project, we should do our first commit.</p>
+</div>
+<div class="paragraph">
+<p>Stage all changed files – that’s just the <em>.gitignore</em> file as we ignored everything else – and commit them:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git add .
+git commit -m &quot;Start Djangoku 🌱&quot;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_django_finally">Django. Finally!</h3>
+<div class="paragraph">
+<p>After all this preparation and groundwork it is finally time to add Django.</p>
+</div>
+<div class="sect3">
+<h4 id="_install_django">Install Django</h4>
+<div class="paragraph">
+<p>Make sure the virtualenvironment is still activated by checking if the project folder is wrapped in parenthesis.</p>
+</div>
+<div class="paragraph">
+<p>Install the Django module:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip install django</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_start_the_django_project">Start the Django project</h4>
+<div class="paragraph">
+<p>Now that the Django module was installed, we can start the actual Django project.
+Note that the command has a <code>.</code> at the end – this will make sure we create the Django project in the current directory and not create a new one.</p>
+</div>
+<div class="paragraph">
+<p>In this book the Django project will be called <em>djangoku</em>.
+You can call your django project differently and adjust the commands accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Start the Django project:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">django-admin.py startproject djangoku .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you look into your root project folder you should see that a file called <em>manage.py</em> and a <em>djangoku</em> folder were added.</p>
+</div>
+<div class="paragraph">
+<p>Run Django:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py runserver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After you have run the command, you should see an address like this: <code>http://127.0.0.1:8000/</code>.
+Open this in your browser and see if Django is running successfully.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ignore_the_sqlite_database">Ignore the SQLite database</h4>
+<div class="paragraph">
+<p>Django creates an SQLite database automatically.
+We will not need this file and delete it later, because we will work with a PostgreSQL database.
+However, we can ignore this for now.
+And by ignoring, I mean: .gitignoring it.
+Note that the command has two <code>&gt;</code>, because we want to append a line to the <em>.gitignore</em> file.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There are other Django projects, where a SQLite database is good enough.
+Even then you should <a href="https://github.com/github/gitignore/blob/db0ef78b5ad1d3caf4cab3240467562360885613/Python.gitignore" target="_blank">always ignore</a> <em>.sqlite3</em> files.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">echo *.sqlite3 &gt;&gt; .gitignore</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_commit">Commit</h4>
+<div class="paragraph">
+<p>Track the new files in Git:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git add .
+git commit -m &quot;Add Django project 🤠&quot;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checklist">Checklist</h3>
+<div class="paragraph">
+<p><strong>Objective</strong>: The project is tracked via Git and Django is running in an activated virtual environment.</p>
+</div>
+<div class="sect3">
+<h4 id="_project_is_tracked_via_git">✔︎ Project is tracked via Git</h4>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git log</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs the last commit messages</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_virtual_environment_is_activated">✔︎ Virtual environment is activated</h4>
+<div class="paragraph">
+<div class="title">Terminal (same window)</div>
+<p>→ The root project folder is wrapped in parenthesis in the Terminal.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_virtual_environment_uses_the_correct_python">✔︎ Virtual environment uses the correct Python</h4>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">which python</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs a path that leads into the virtual environment folder.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_django_is_installed">✔︎ Django is installed</h4>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python -m django --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs Django version.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_django_works">✔︎ Django works</h4>
+<div class="paragraph">
+<div class="title">Browser (any window)</div>
+<p>→ Visit the URL that Django showed on startup and see if it shows the Django success message.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="what_you_need_to_start.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: What you need to start">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Starting the project","level":"1.4","depth":1,"previous":{"title":"What you need to start","level":"1.3","depth":1,"path":"chapters/what_you_need_to_start.adoc","ref":"chapters/what_you_need_to_start.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/starting_the_project.adoc","mtime":"2020-12-28T15:57:28.072Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2020-12-28T15:57:46.698Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

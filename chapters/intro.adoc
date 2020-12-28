@@ -1,0 +1,4 @@
+// Explain the WHY (book and topic)
+
+Every chapter closes with a checklist.
+That way you can quickly reference important steps, without the noise.
