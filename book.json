@@ -1,0 +1,7 @@
+{
+    "pdf": {
+        "fontSize": 16,
+        "fontFamily": "IBMPlexSans",
+        "embedFonts": true
+    }
+}
