@@ -3,3 +3,4 @@
 . link:chapters/what_you_will_learn.adoc[What you will learn]
 . link:chapters/what_you_need_to_start.adoc[What you need to start]
 . link:chapters/starting_the_project.adoc[Starting the project]
+. link:chapters/creating_the_heroku_highway.adoc[Creating the heroku highway]
