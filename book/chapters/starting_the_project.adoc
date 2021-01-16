@@ -58,7 +58,7 @@ python3 -m venv virtualenv
 source virtualenv/bin/activate
 ----
 
-You can see that you have activated the virtual environment if the project foldername is wrapped in parenthesis e.g. _(djangoku_dev)_
+You can see that you have activated the virtual environment if the project foldername is wrapped in parenthesis e.g. _(virtualenv)_
 
 This virtual environment folder is needed only locally.
 GitLab and Heroku will create their own environments later.
@@ -131,12 +131,16 @@ python manage.py runserver
 After you have run the command, you should see an address like this: `http://127.0.0.1:8000/`.
 Open this in your browser and see if Django is running successfully.
 
+To stop the Django server press `ctrl + c` while being in the Terminal.
+
 ==== Ignore the SQLite database
 
 Django creates an SQLite database automatically.
+That’s the _db.sqlite3_ file in the root folder.
 We will not need this file and delete it later, because we will work with a PostgreSQL database.
-However, we can ignore this for now.
-And by ignoring, I mean: .gitignoring it.
+For now it is enough to not track the database file and add it to _.gitignore_.
+If we would only delete it without declaring an alternative database at the same time, Django just recreates _db.sqlite3_ everytime the server runs.
+
 Note that the command has two `>`, because we want to append a line to the _.gitignore_ file.
 
 [NOTE]
@@ -162,7 +166,7 @@ git commit -m "Add Django project 🤠"
 ----
 
 === Checklist
-*Objective*: The project is tracked via Git and Django is running in an activated virtual environment.
+*Objective*: The project is tracked via Git and Django is present in an activated virtual environment.
 
 ==== ✔︎ Project is tracked via Git
 
@@ -198,5 +202,5 @@ python -m django --version
 
 ==== ✔︎ Django works
 .Browser (any window)
--> Visit the URL that Django showed on startup and see if it shows the Django success message.
+-> Visit the URL that Django showed on startup (usually `http://127.0.0.1:8000`) and see if it shows the Django success message.
 
