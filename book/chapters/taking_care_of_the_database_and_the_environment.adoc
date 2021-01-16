@@ -1,0 +1,15 @@
+== Taking care of the Database and the Environment
+
+Now that the basic local setup is in place, it is time to enhance it a bit.
+In this chapter we will connect Django with a PostgreSQL database and make use of environment variables.
+
+=== Add env variables
+
+Important data should not live in your code or be part of the version control.
+That’s where environment variables come in handy.
+Another advantage is, that we can set different values in different environments (hence the name).
+
+[INFO]
+To learn more about best practices for web apps, check out https://12factor.net/[the twelve-factor methodology]
+
+//TODO: Continue with secret key
