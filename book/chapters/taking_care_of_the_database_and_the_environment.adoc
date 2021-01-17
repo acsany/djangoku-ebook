@@ -3,7 +3,7 @@
 Now that the basic local setup is in place, it is time to enhance it a bit.
 In this chapter we will connect Django with a PostgreSQL database and make use of environment variables.
 
-=== Add env variables
+=== Create and ignore an _.env_ file
 
 Important data should not live in your code or be part of the version control.
 That’s where environment variables come in handy.
@@ -11,6 +11,9 @@ Another advantage is, that we can set different values in different environments
 
 [INFO]
 To learn more about best practices for web apps, check out https://12factor.net/[the twelve-factor methodology]
+
+Locally we will store the environment variables in an _.env_ file.
+Later on GitLab and heroku, those variables can be set in the settings.
 
 Create an _.env_ file:
 
@@ -20,6 +23,8 @@ Create an _.env_ file:
 touch .env
 ----
 
+Let’s ignore the _.env_ file to prevent Git from tracking the content of it.
+
 Add the _.env_ file to _.gitignore_:
 
 .Terminal (same window)
@@ -27,3 +32,119 @@ Add the _.env_ file to _.gitignore_:
 ----
 echo .env >> .gitignore
 ----
+
+=== Load necessary modules
+
+To easily load and get environment variables in Django, we use the `python-dotenv` module.
+
+Add `python-dotenv` to the project:
+
+.Terminal
+[source, shell]
+----
+pip install python-dotenv
+----
+
+Import  `os` and `python`dotenv` to the Django settings and load latter:
+
+.djangoku/settings.py (Beginning of the file)
+[source, Python]
+----
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+----
+
+=== Create an easy DEBUG switch
+
+The Django debug mode should be https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/#debug[turned off] in production.
+Locally or in a staging environment it might be useful to see the Django debug messages.
+That’s why we want to set the debug mode for the environment separately.
+
+Change the value of `DEBUG` from `True` to this:
+
+.djangoku/settings.py::23
+[source, Python]
+----
+DEBUG = os.getenv('DEBUG', default=False) == "True"
+----
+
+This statement does look a bit odd, so let’s go a bit into details here:
+
+1. `os.getenv` tries to get the `DEBUG` env variable.
+2. If `DEBUG` is not set as an env variable, `DEBUG` defaults to `False`.
+3. If the env variable is set to `"True"`, `DEBUG` is set to `True`.
+
+[IMPORTANT]
+Mind that environment variables are read as strings. Therefore we must check for a `"True"` string, not a boolean.
+
+If you run Django server now you will see that Django does not run in debug mode.
+Locally we want to contnue to see debug messages.
+
+Add `DJANGO_DEBUG` variable to the _.env_ file and set it to `True`:
+
+.'.env'
+[source, shell]
+----
+export DJANGO_DEBUG=True
+----
+
+If you re-run the Django server you will see that Django does run in debug mode again.
+
+=== Add another secret to the _.env_ file
+
+[quote, 'Django Documentation, https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/#secret-key[Deployment Checklist]']
+____
+The secret key must be a large random value and it must be kept secret.
+____
+
+
+[INFO]
+See this (https://stackoverflow.com/a/47117966[_stack overflow_ answer]) to learn more about the purpose of the secret key.
+
+If you have a look in the settings file around _line 23_ you see the current value of Django’s `SECRET_KEY`.
+
+.djangoku/settings.py::23
+[source, Python]
+----
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'mp#qzy1(u!!)ch!s7-d@4rybwz2-r5^l%cy699=v=uyqo%ucsv'
+----
+
+Since we already added this file to Git, we need to create a new 'SECRET_KEY', add it to our _.env_ file as a variable and reference it in the settings file.
+
+Start the Django shell in the terminal:
+
+.Terminal
+[source, shell]
+----
+from django.core.management.utils import get_random_secret_key
+----
+
+Get a new secret key:
+.Terminal
+[source, shell]
+----
+get_random_secret_key()
+----
+
+Copy the output (e.g. `NEWLY%G3GENERATEDsecret_KEY!`) and add it to the _.env_ file:
+
+.'.env'
+[source, shell]
+----
+export DJANGO_SECRET_KEY=NEWLY%G3GENERATEDsecret_KEY!
+----
+
+Replace the `SECRET_KEY` string with a reference to the environment variable:
+
+.djangoku/settings.py (Beginning of the file)
+[source, Python]
+----
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+----
+
+=== Checklist
+
+// Add checklist to chapter
