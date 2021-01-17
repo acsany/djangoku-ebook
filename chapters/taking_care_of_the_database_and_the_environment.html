@@ -219,7 +219,7 @@
 In this chapter we will connect Django with a PostgreSQL database and make use of environment variables.</p>
 </div>
 <div class="sect2">
-<h3 id="_add_env_variables">Add env variables</h3>
+<h3 id="_create_and_ignore_an_env_file">Create and ignore an <em>.env</em> file</h3>
 <div class="paragraph">
 <p>Important data should not live in your code or be part of the version control.
 That’s where environment variables come in handy.
@@ -227,6 +227,10 @@ Another advantage is, that we can set different values in different environments
 </div>
 <div class="paragraph">
 <p>To learn more about best practices for web apps, check out <a href="https://12factor.net/" target="_blank">the twelve-factor methodology</a></p>
+</div>
+<div class="paragraph">
+<p>Locally we will store the environment variables in an <em>.env</em> file.
+Later on GitLab and heroku, those variables can be set in the settings.</p>
 </div>
 <div class="paragraph">
 <p>Create an <em>.env</em> file:</p>
@@ -238,6 +242,9 @@ Another advantage is, that we can set different values in different environments
 </div>
 </div>
 <div class="paragraph">
+<p>Let’s ignore the <em>.env</em> file to prevent Git from tracking the content of it.</p>
+</div>
+<div class="paragraph">
 <p>Add the <em>.env</em> file to <em>.gitignore</em>:</p>
 </div>
 <div class="listingblock">
@@ -246,6 +253,163 @@ Another advantage is, that we can set different values in different environments
 <pre class="highlight"><code class="language-shell" data-lang="shell">echo .env &gt;&gt; .gitignore</code></pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_load_necessary_modules">Load necessary modules</h3>
+<div class="paragraph">
+<p>To easily load and get environment variables in Django, we use the <code>python-dotenv</code> module.</p>
+</div>
+<div class="paragraph">
+<p>Add <code>python-dotenv</code> to the project:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip install python-dotenv</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Import  <code>os</code> and <code>python`dotenv</code> to the Django settings and load latter:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py (Beginning of the file)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> dotenv <span class="hljs-keyword">import</span> load_dotenv
+
+load_dotenv()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_an_easy_debug_switch">Create an easy DEBUG switch</h3>
+<div class="paragraph">
+<p>The Django debug mode should be <a href="https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/#debug" target="_blank">turned off</a> in production.
+Locally or in a staging environment it might be useful to see the Django debug messages.
+That’s why we want to set the debug mode for the environment separately.</p>
+</div>
+<div class="paragraph">
+<p>Change the value of <code>DEBUG</code> from <code>True</code> to this:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py::23</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python">DEBUG = os.getenv(<span class="hljs-string">&apos;DEBUG&apos;</span>, default=<span class="hljs-literal">False</span>) == <span class="hljs-string">&quot;True&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This statement does look a bit odd, so let’s go a bit into details here:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>os.getenv</code> tries to get the <code>DEBUG</code> env variable.</p>
+</li>
+<li>
+<p>If <code>DEBUG</code> is not set as an env variable, <code>DEBUG</code> defaults to <code>False</code>.</p>
+</li>
+<li>
+<p>If the env variable is set to <code>&quot;True&quot;</code>, <code>DEBUG</code> is set to <code>True</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Mind that environment variables are read as strings. Therefore we must check for a <code>&quot;True&quot;</code> string, not a boolean.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you run Django server now you will see that Django does not run in debug mode.
+Locally we want to contnue to see debug messages.</p>
+</div>
+<div class="paragraph">
+<p>Add <code>DJANGO_DEBUG</code> variable to the <em>.env</em> file and set it to <code>True</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">&apos;.env&apos;</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">export DJANGO_DEBUG=True</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you re-run the Django server you will see that Django does run in debug mode again.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_another_secret_to_the_env_file">Add another secret to the <em>.env</em> file</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The secret key must be a large random value and it must be kept secret.</p>
+</div>
+</blockquote>
+<div class="attribution">
+— Django Documentation, <a href="https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/#secret-key" target="_blank">Deployment Checklist</a>
+</div>
+</div>
+<div class="paragraph">
+<p>See this (<a href="https://stackoverflow.com/a/47117966" target="_blank"><em>stack overflow</em> answer</a>) to learn more about the purpose of the secret key.</p>
+</div>
+<div class="paragraph">
+<p>If you have a look in the settings file around <em>line 23</em> you see the current value of Django’s <code>SECRET_KEY</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py::23</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-comment"># SECURITY WARNING: keep the secret key used in production secret!</span>
+SECRET_KEY = <span class="hljs-string">&apos;mp#qzy1(u!!)ch!s7-d@4rybwz2-r5^l%cy699=v=uyqo%ucsv&apos;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since we already added this file to Git, we need to create a new &apos;SECRET_KEY&apos;, add it to our <em>.env</em> file as a variable and reference it in the settings file.</p>
+</div>
+<div class="paragraph">
+<p>Start the Django shell in the terminal:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">from django.core.management.utils import get_random_secret_key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get a new secret key:
+.Terminal</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">get_random_secret_key()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Copy the output (e.g. <code>NEWLY%G3GENERATEDsecret_KEY!</code>) and add it to the <em>.env</em> file:</p>
+</div>
+<div class="listingblock">
+<div class="title">&apos;.env&apos;</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">export DJANGO_SECRET_KEY=NEWLY%G3GENERATEDsecret_KEY!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace the <code>SECRET_KEY</code> string with a reference to the environment variable:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py (Beginning of the file)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python">SECRET_KEY = os.getenv(<span class="hljs-string">&apos;DJANGO_SECRET_KEY&apos;</span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checklist">Checklist</h3>
+
 </div>
 </div>
 </div>
@@ -291,7 +455,7 @@ Another advantage is, that we can set different values in different environments
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Taking care of the Database and the Environment","level":"1.5","depth":1,"next":{"title":"Creating the heroku highway","level":"1.6","depth":1,"path":"chapters/creating_the_heroku_highway.adoc","ref":"chapters/creating_the_heroku_highway.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.4","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_database_and_the_environment.adoc","mtime":"2021-01-17T17:01:05.786Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-17T17:01:24.180Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Taking care of the Database and the Environment","level":"1.5","depth":1,"next":{"title":"Creating the heroku highway","level":"1.6","depth":1,"path":"chapters/creating_the_heroku_highway.adoc","ref":"chapters/creating_the_heroku_highway.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.4","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_database_and_the_environment.adoc","mtime":"2021-01-17T17:58:56.900Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-17T17:59:15.562Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
