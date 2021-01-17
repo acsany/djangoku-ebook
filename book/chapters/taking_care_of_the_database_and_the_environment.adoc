@@ -12,4 +12,18 @@ Another advantage is, that we can set different values in different environments
 [INFO]
 To learn more about best practices for web apps, check out https://12factor.net/[the twelve-factor methodology]
 
-//TODO: Continue with secret key
+Create an _.env_ file:
+
+.Terminal (same window)
+[source, shell]
+----
+touch .env
+----
+
+Add the _.env_ file to _.gitignore_:
+
+.Terminal (same window)
+[source, shell]
+----
+echo .env >> .gitignore
+----
