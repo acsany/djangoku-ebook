@@ -131,7 +131,7 @@ python manage.py runserver
 After you have run the command, you should see an address like this: `http://127.0.0.1:8000/`.
 Open this in your browser and see if Django is running successfully.
 
-To stop the Django server press `ctrl + c` while being in the Terminal.
+To stop the Django server press kbd:[Ctrl+c] while being in the Terminal.
 
 ==== Ignore the SQLite database
 
