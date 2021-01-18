@@ -1,4 +1,4 @@
-== Taking care of the Database and the Environment
+== Taking care of the Environment
 
 Now that the basic local setup is in place, it is time to enhance it a bit.
 In this chapter we will connect Django with a PostgreSQL database and make use of environment variables.
