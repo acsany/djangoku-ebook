@@ -147,4 +147,49 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 === Checklist
 
-// Add checklist to chapter
+// Add checklist to chapter*Objective*: The project works with an *_.env* file to load environment variables.
+
+===  ✔︎ _.env_ exists
+.Terminal
+[source, shell]
+----
+cat .env
+----
+-> Outputs the contents of the _.env_ file
+
+===  ✔︎ _.env_ is not tracked in Git
+.Terminal
+[source, shell]
+----
+git ls-files --error-unmatch .env
+----
+-> Outputs `error: pathspec '.env' did not match any file(s) known to git`
+
+===  ✔︎ _.env_ is ignored by Git
+.Terminal
+[source, shell]
+----
+git check-ignore .env
+----
+-> Outputs `.env`
+
+===  ✔︎ Django can access the env variables
+
+.Terminal
+[source, shell]
+----
+python manage.py shell
+----
+
+.Terminal
+[source, shell]
+----
+import os
+from dotenv import load_dotenv
+from django.conf import settings
+
+load_dotenv()
+
+settings.SECRET_KEY == os.getenv(DJANGO_SECRET_KEY)
+----
+-> Outputs `True`
