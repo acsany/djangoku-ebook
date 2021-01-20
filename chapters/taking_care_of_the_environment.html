@@ -376,6 +376,12 @@ SECRET_KEY = <span class="hljs-string">&apos;mp#qzy1(u!!)ch!s7-d@4rybwz2-r5^l%cy
 <div class="listingblock">
 <div class="title">Terminal</div>
 <div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py shell</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">from django.core.management.utils import get_random_secret_key</code></pre>
 </div>
 </div>
@@ -408,8 +414,85 @@ SECRET_KEY = <span class="hljs-string">&apos;mp#qzy1(u!!)ch!s7-d@4rybwz2-r5^l%cy
 </div>
 </div>
 <div class="sect2">
+<h3 id="_commit_updated_gitignore_file">Commit updated <em>.gitignore</em> file</h3>
+<div class="paragraph">
+<p>We have made a few changes in Django.
+But for now it we only <em>.gitignore</em> file.
+All other commits get a special focus in the next chapter.</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git add .
+git commit -m &quot;Start Djangoku 🌱&quot;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_checklist">Checklist</h3>
+<div class="paragraph">
+<p><strong>Objective</strong>: The project works with an <strong>_.env</strong> file to load environment variables.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_env_exists">✔︎ <em>.env</em> exists</h3>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">cat .env</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs the contents of the <em>.env</em> file</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_env_is_not_tracked_in_git">✔︎ <em>.env</em> is not tracked in Git</h3>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git ls-files --error-unmatch .env</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs <code>error: pathspec &apos;.env&apos; did not match any file(s) known to git</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_env_is_ignored_by_git">✔︎ <em>.env</em> is ignored by Git</h3>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git check-ignore .env</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs <code>.env</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_django_can_access_the_env_variables">✔︎ Django can access the env variables</h3>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py shell</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">import os
+from dotenv import load_dotenv
+from django.conf import settings
 
+load_dotenv()
+
+settings.SECRET_KEY == os.getenv(DJANGO_SECRET_KEY)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs <code>True</code></p>
+</div>
 </div>
 </div>
 </div>
@@ -455,7 +538,7 @@ SECRET_KEY = <span class="hljs-string">&apos;mp#qzy1(u!!)ch!s7-d@4rybwz2-r5^l%cy
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.5","depth":1,"next":{"title":"Creating the heroku highway","level":"1.6","depth":1,"path":"chapters/creating_the_heroku_highway.adoc","ref":"chapters/creating_the_heroku_highway.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.4","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-01-18T20:18:02.790Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-18T20:18:20.121Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.5","depth":1,"next":{"title":"Creating the heroku highway","level":"1.6","depth":1,"path":"chapters/creating_the_heroku_highway.adoc","ref":"chapters/creating_the_heroku_highway.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.4","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-01-20T20:06:18.934Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-20T20:06:34.171Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
