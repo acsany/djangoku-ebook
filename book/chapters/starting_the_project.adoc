@@ -167,6 +167,30 @@ git add .
 git commit -m "Add Django project 🤠"
 ----
 
+
+=== Freeze!
+
+As long as we don’t push anything to the server we don’t have to bother that much about dependencies.
+Still this is a good moment to freeze the Python modules we are using at this stage into a _requirements.txt_ file.
+With this file in our repository, GitLab and heroku will automatically install the exact versions of Python modules we use in their environment.
+
+Let’s create and fill the _requirements.txt_ in one go:
+
+.Terminal
+[source, shell]
+----
+pip freeze > requirements.txt
+----
+
+Stage and commit _requirements.txt_:
+
+.Terminal (same window)
+[source, shell]
+----
+git add requirements.txt
+git commit -m "Add current project requirements 📜"
+----
+
 === Checklist
 *Objective*: The project is tracked via Git and Django is present in an activated virtual environment.
 
