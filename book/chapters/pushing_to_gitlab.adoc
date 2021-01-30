@@ -1,0 +1,85 @@
+== Pushing to GitLab
+
+So far we only have worked locally.
+In this chapter we will create a remote repository on GitLab to push our code to.
+
+=== Creating the GitLab project
+
+Gitlab has the functionality to create a new project by non-existant repositories by https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project[_just pushing to them_].
+The repository is set to _private_ by default.
+You can change that in the GitLab https://docs.gitlab.com/ee/public_access/public_access.html#how-to-change-project-visibility[project settings].
+
+[NOTE]
+If you feel more comfortable to https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project[use the GitLab website], that’s fine to.
+Just make sure the remote repository is empty, so we can push to it without  pulling it first and maybe even running into merge conflicts.
+
+.Terminal
+[source, shell]
+----
+## Important: Change {username} to your GitLab username
+git push --set-upstream git@gitlab.com:{username}/djangoku.git master
+----
+
+This command created the project on GitLab and pushed the current state of our local repository to the remote repository.
+However, it did not _add_ the the remote repository.
+
+So, let’s do this:
+
+.Terminal
+[source, shell]
+----
+## Important: Change {username} to your GitLab username
+git remote add origin git@gitlab.com:{username}/djangoku.git
+----
+
+=== Creating a Readme file
+
+Since our project is still missing a Readme file, now is finally the time to create one.
+Feel free to add any content you want to the Readme file.
+Just make sure to nor add any sensitive data to it, as it will be tracked by Git and may be exposed to the public.
+
+Create a _Readme.md_ file:
+
+.Terminal
+[source, shell]
+----
+echo "#Djangoku" > Readme.md
+----
+
+[INFO]
+https://reinteractive.com/posts/137-on-the-importance-of-a-readme[This blog post] by Raphael Campardou lists what makes a good readme file.
+
+=== Commit and push updates
+
+If you run `git status` you will see, that we added _Readme.md_.
+
+Now we can stage, commit and push it to GitLab:
+
+.Terminal (same window)
+[source, shell]
+----
+git add .
+git commit -m "Add Readme 🐌"
+git push origin master
+----
+
+=== Checklist
+
+====  ✔︎ Remote repository is added
+
+.Terminal
+[source, shell]
+----
+git remote -v
+----
+-> Shows `origin` with url as _fetch_ and _push_  remote.
+
+====  ✔︎ Remote repository is up to date
+
+.Terminal
+[source, shell]
+----
+git diff origin/master
+----
+-> Outputs nothing.
+

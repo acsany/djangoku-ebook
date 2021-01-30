@@ -42,6 +42,13 @@ Initiate a new Git repository:
 git init
 ----
 
+[NOTE]
+It is https://tom.preston-werner.com/2010/08/23/readme-driven-development.html[a good idea] to create a Readme file at the beginning of a project.
+//TODO: Add chapter
+We will create this file later in chapter X when we push our repository to GitLab.
+Feel free to create it now and add information along the way.
+Just be careful to not add any sensitive data to it.
+
 ==== Create the virtual environment
 
 [NOTE]
