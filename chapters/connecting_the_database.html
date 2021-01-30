@@ -1,0 +1,615 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Connecting the database · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.16">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="creating_the_heroku_highway.html" />
+    
+    
+    <link rel="prev" href="taking_care_of_the_environment.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="what_you_will_learn.html">
+            
+                <a href="what_you_will_learn.html">
+            
+                    
+                    What you will learn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="what_you_need_to_start.html">
+            
+                <a href="what_you_need_to_start.html">
+            
+                    
+                    What you need to start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="starting_the_project.html">
+            
+                <a href="starting_the_project.html">
+            
+                    
+                    Starting the project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="taking_care_of_the_environment.html">
+            
+                <a href="taking_care_of_the_environment.html">
+            
+                    
+                    Taking care of the Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="connecting_the_database.html">
+            
+                <a href="connecting_the_database.html">
+            
+                    
+                    Connecting the database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="creating_the_heroku_highway.html">
+            
+                <a href="creating_the_heroku_highway.html">
+            
+                    
+                    Creating the heroku highway
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Connecting the database</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="sect1">
+<h2 id="_connecting_the_database">Connecting the database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every environment will have their own database.
+On heroku, the database will be created automatically.
+Locally we have to create the database on our own.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_the_local_postgrsql_database">Creating the local PostgrSQL database</h3>
+<div class="paragraph">
+<p>As described in Chapter X, we ignored the SQLite database to create or own PostgreSQL database.
+So let’s do this.</p>
+</div>
+<div class="paragraph">
+<p>Open postgres shell:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">psql</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>psql</code> command fails, you may have forgotten to start the Postgres server.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can use your own database name.
+I like to use a database name that is a combination out of the project name and the environment.
+That way it is easy to find it when there are multiple databases.
+And it is clear which environment the database is meant for.</p>
+</div>
+<div class="paragraph">
+<p>Create the database:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">CREATE DATABASE djangoku_local;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Do not forget the <code>;</code> at the end
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Quit postgres shell:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">\q</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_database_modules">Adding database modules</h3>
+<div class="paragraph">
+<p>For Django and heroku to be able work with PostgrSQL databases, we need two additional modules.
+<code>psycopg2</code> is a database adapter, that enables Django to <em>talk</em> to the PostgreSQL database.
+<code>dj-database-url</code> allows us to use database urls.
+This is not important in our local environment, but will be on Heroku.
+Heroku stores the database url in an environment URL, that we access in the Django settings.</p>
+</div>
+<div class="paragraph">
+<p>Let’s install both packages:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip install psycopg2 dj-database-url</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And update our <em>requirements.txt</em> file:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip freeze &gt; requirements.txt</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connecting_django_and_the_database">Connecting Django and the database</h3>
+<div class="paragraph">
+<p>Now that we have the prerequisites for our PostgreSQL database in place, it is time to clean up a bit.</p>
+</div>
+<div class="sect3">
+<h4 id="_deleting_the_old">Deleting the old …</h4>
+<div class="paragraph">
+<p>Finally we can get rid of the <em>db.sqlite3</em> database.
+Just make sure that you first follow the steps to add the PostgreSQL databas below, before restarting the Django server.
+Otherwise Django will just recreate the file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">rm db.sqlite3</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adding_the_new">… adding the new</h4>
+<div class="paragraph">
+<p>The data Django needs to connect to the PostgreSQL database is sensitive information.
+That’s one reason why we will store them in our <em>.env</em> file.
+Another advantage of this is that we can connect to different databases on different environments.</p>
+</div>
+<div class="paragraph">
+<p>We will add a <code>DATABASE_URL</code> variable to the <em>.env</em> file, that contains all information to connect to the database.
+It will look like this:
+<code>DATABASE_URL=postgres://{user}:{password}@{host_name}:{port}/{database_name</code></p>
+</div>
+<div class="paragraph">
+<p>Before we add it to the <em>.env</em> file, let’s look at the segments of the <code>DATABSE_URL</code>:</p>
+</div>
+<div class="paragraph">
+<p>| Segment | Info | Default value |
+|---|---|---|
+| <code>user</code> | The user you want to connect with to the database| <code>postgres</code> |
+| <code>password</code> | The password for the user | <code>` (no password) |
+| `host_name</code> | The database host | <code>localhost</code> |
+| <code>port</code> | The database port | <code>5432</code> |
+| <code>database_name</code> | The database name you chose before | <code>djangoku_local</code> |</p>
+</div>
+<div class="paragraph">
+<p>Let’s combine the segments to a functional url and add it to <em>.env</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">&apos;.env&apos;</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">export DATABASE_URL=postgres://postgres@localhost:5432/djangoku_local</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we need to tell Django to use this database instead of the standard SQLite database by importing <code>dj_database_url</code> into <code>djangoku/settings.py</code> and adjusting the <code>DATABASES</code> variable.</p>
+</div>
+<div class="paragraph">
+<p>Import <code>dj_database_url</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py (At the beginning of the file)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">import</span> dj_database_url</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace the current value of <code>DATABASES</code> with this:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py (Around line 78)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python">DATABASES = {
+    <span class="hljs-string">&apos;default&apos;</span>: dj_database_url.config(conn_max_age=<span class="hljs-number">600</span>)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Try <code>python manage.py runserver</code> to see if Django starts as expected.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you deleted <em>db.sqlite3</em> before starting the server, it <em>should not</em> be recreated by Django automatically on launch.
+If it does, you need to check your settings again.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_commit_updates">Commit updates</h3>
+<div class="paragraph">
+<p>If you run <code>git status</code> you will see, that we changed <em>requirements.txt</em> and <em>djangoku/settings.py</em>.</p>
+</div>
+<div class="paragraph">
+<p>Now we can stage and commit all changes:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git add .
+git commit -m &quot;Connect PostgreSQL database 🗄&quot;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checklist">Checklist</h3>
+<div class="sect3">
+<h4 id="_db_sqlite3_is_deleted">✔︎ db.sqlite3 is deleted</h4>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">test -f db.sqlite3 || echo &quot;deleted&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs <code>&quot;deleted&quot;</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_postgresql_database_is_present">✔︎ PostgreSQL database is present</h4>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">psql --list</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ <code>djangoku_local</code> is present in the database list output.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_database_url_is_parsed_correctly">✔︎ DATABASE_URL is parsed correctly</h4>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py shell</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">from django.conf import settings
+
+settings.DATABASES[&apos;default&apos;]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Outputs a dictionary with correct values for <code>NAME</code>, <code>USER</code>, <code>HOST</code>, <code>PORT</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_django_runs_correctly">✔︎ Django runs correctly</h4>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py runserver</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Development server starts</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="taking_care_of_the_environment.html" class="navigation navigation-prev " aria-label="Previous page: Taking care of the Environment">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="creating_the_heroku_highway.html" class="navigation navigation-next " aria-label="Next page: Creating the heroku highway">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Connecting the database","level":"1.6","depth":1,"next":{"title":"Creating the heroku highway","level":"1.7","depth":1,"path":"chapters/creating_the_heroku_highway.adoc","ref":"chapters/creating_the_heroku_highway.adoc","articles":[]},"previous":{"title":"Taking care of the Environment","level":"1.5","depth":1,"path":"chapters/taking_care_of_the_environment.adoc","ref":"chapters/taking_care_of_the_environment.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/connecting_the_database.adoc","mtime":"2021-01-30T17:57:47.992Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-30T17:58:07.126Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
