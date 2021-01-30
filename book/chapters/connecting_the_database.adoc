@@ -1,1 +1,203 @@
 == Connecting the database
+
+Every environment will have their own database.
+On heroku, the database will be created automatically.
+Locally we have to create the database on our own.
+
+=== Creating the local PostgrSQL database
+// TODO: Add chapter
+As described in Chapter X, we ignored the SQLite database to create or own PostgreSQL database.
+So let’s do this.
+
+Open postgres shell:
+
+.Terminal
+[source, shell]
+----
+psql
+----
+
+[NOTE]
+If the `psql` command fails, you may have forgotten to start the Postgres server.
+
+
+You can use your own database name.
+I like to use a database name that is a combination out of the project name and the environment.
+That way it is easy to find it when there are multiple databases.
+And it is clear which environment the database is meant for.
+
+Create the database:
+
+.Terminal
+[source, shell]
+----
+CREATE DATABASE djangoku_local;
+----
+
+[IMPORTANT]
+Do not forget the `;` at the end
+
+Quit postgres shell:
+
+.Terminal
+[source, shell]
+----
+\q
+----
+
+=== Adding database modules
+
+For Django and heroku to be able work with PostgrSQL databases, we need two additional modules.
+`psycopg2` is a database adapter, that enables Django to _talk_ to the PostgreSQL database.
+`dj-database-url` allows us to use database urls.
+This is not important in our local environment, but will be on Heroku.
+Heroku stores the database url in an environment URL, that we access in the Django settings.
+
+Let’s install both packages:
+
+.Terminal
+[source, shell]
+----
+pip install psycopg2 dj-database-url
+----
+
+And update our _requirements.txt_ file:
+
+.Terminal
+[source, shell]
+----
+pip freeze > requirements.txt
+----
+
+=== Connecting Django and the database
+
+Now that we have the prerequisites for our PostgreSQL database in place, it is time to clean up a bit.
+
+==== Deleting the old …
+
+Finally we can get rid of the _db.sqlite3_ database.
+Just make sure that you first follow the steps to add the PostgreSQL databas below, before restarting the Django server.
+Otherwise Django will just recreate the file.
+
+.Terminal
+[source, shell]
+----
+rm db.sqlite3
+----
+
+==== … adding the new
+
+The data Django needs to connect to the PostgreSQL database is sensitive information.
+That’s one reason why we will store them in our _.env_ file.
+Another advantage of this is that we can connect to different databases on different environments.
+
+We will add a `DATABASE_URL` variable to the _.env_ file, that contains all information to connect to the database.
+It will look like this:
+`DATABASE_URL=postgres://{user}:{password}@{host_name}:{port}/{database_name`
+
+Before we add it to the _.env_ file, let’s look at the segments of the `DATABSE_URL`:
+
+| Segment | Info | Default value |
+|---|---|---|
+| `user` | The user you want to connect with to the database| `postgres` |
+| `password` | The password for the user | `` (no password) |
+| `host_name` | The database host | `localhost` |
+| `port` | The database port | `5432` |
+| `database_name` | The database name you chose before | `djangoku_local` |
+
+Let’s combine the segments to a functional url and add it to _.env_:
+
+.'.env'
+[source, shell]
+----
+export DATABASE_URL=postgres://postgres@localhost:5432/djangoku_local
+----
+
+Now we need to tell Django to use this database instead of the standard SQLite database by importing `dj_database_url` into `djangoku/settings.py` and adjusting the `DATABASES` variable.
+
+Import `dj_database_url`:
+
+.djangoku/settings.py (At the beginning of the file)
+[source, Python]
+----
+import dj_database_url
+----
+
+Replace the current value of `DATABASES` with this:
+
+//TODO: Check if require ssl should be set
+//TODO: Add note about conn_max_age
+
+.djangoku/settings.py (Around line 78)
+[source, Python]
+----
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
+----
+
+Try `python manage.py runserver` to see if Django starts as expected.
+
+[NOTE]
+If you deleted _db.sqlite3_ before starting the server, it _should not_ be recreated by Django automatically on launch.
+If it does, you need to check your settings again.
+
+
+=== Commit updates
+
+If you run `git status` you will see, that we changed _requirements.txt_ and _djangoku/settings.py_.
+
+Now we can stage and commit all changes:
+
+.Terminal (same window)
+[source, shell]
+----
+git add .
+git commit -m "Connect PostgreSQL database 🗄"
+----
+
+=== Checklist
+
+====  ✔︎ db.sqlite3 is deleted
+
+.Terminal
+[source, shell]
+----
+test -f db.sqlite3 || echo "deleted"
+----
+-> Outputs `"deleted"`
+
+==== ✔︎ PostgreSQL database is present
+
+.Terminal
+[source, shell]
+----
+psql --list
+----
+-> `djangoku_local` is present in the database list output.
+
+====  ✔︎ DATABASE_URL is parsed correctly
+
+.Terminal
+[source, shell]
+----
+python manage.py shell
+----
+
+.Terminal
+[source, shell]
+----
+from django.conf import settings
+
+settings.DATABASES['default']
+----
+-> Outputs a dictionary with correct values for `NAME`, `USER`, `HOST`, `PORT`
+
+====  ✔︎ Django runs correctly
+
+.Terminal (same window)
+[source, shell]
+----
+python manage.py runserver
+----
+-> Development server starts
