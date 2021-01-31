@@ -1,0 +1,193 @@
+== Building Our Pipeline
+
+What we have so far is a basic Django project.
+With everything we did so far, we have a decent basis to extend the project by adding a superuser, apps, models, views, templates, etc.
+
+However, to quickly release new features in the future we continue to concentrate on our deployment pipeline.
+When we push our code to our remote repository, we want GitLab to autodeploy our project to heroku.
+In order to do this, we must enhance our Django project to a proper heroku app and add a _.gitlab-ci.yml_ file.
+
+=== Create a heroku app
+
+Verify that you are logged in with the correct heroku user:
+
+.Terminal
+[source, shell]
+----
+heroku auth:whoami
+----
+
+Chose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your heroku app.
+
+Then create your heroku app with the _heroku CLI_:
+
+.Terminal
+[source, shell]
+----
+## Important: Change {appname} to a unique app name and {region} to your preferred region.
+heroku apps:create {appname} --region {region}
+----
+
+=== Create a Procfile with Gunicorn
+
+All Heroku applications require a _Procfile_.
+This file file must be located in the root of the project.
+It declares how Heroku should run your application.
+
+For Django we will tell Heroku to run  a _Gunicorn_ server for us.
+
+Create a _Procfile_:
+
+.Terminal
+[source, shell]
+----
+echo web: gunicorn djangoku.wsgi > Procfile
+----
+
+[NOTE]
+If you named your project differently, you need to adjust the command above accordingly.
+
+Install `gunicorn`:
+
+.Terminal
+[source, shell]
+----
+pip install gunicorn
+----
+
+=== Add `django-heroku`
+
+With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
+Especially the handling of settings, static files and logging is much easier with it.
+All required dependencies are downloaded automatically for us.
+
+Install `django-heroku`:
+
+.Terminal
+[source, shell]
+----
+pip install django-heroku
+----
+
+Add it to our _settings.py_ file:
+
+.djangoku/settings.py (At the bottom of the file)
+[source, Python]
+----
+import django_heroku
+django_heroku.settings(locals())
+----
+
+=== Update our requirements
+
+With two new modules in our project, let’s update our requirements.
+
+Update _requirements.txt_:
+
+.Terminal
+[source, shell]
+----
+pip freeze > requirements.txt
+----
+
+=== Adding GitLab CI instructions
+
+Now that our Heroku requirements are fulfilled, we need to tell GitLab to deploy our code to Heroku on push.
+We do this by adding a CI/CD pipeline to our remote repository.
+GitLab creates this pipeline automatically when a `gitlab-ci.yml` file is present in the root of the repository.
+
+Our `gitlab-ci.yml` contain instructions about connecting with Heroku.
+The authorization will be done by an env variable named `HEROKU_PRODUCTION_API_KEY`.
+
+==== Get your Heroku API key
+
+You can find your Heroku API key (aka. auth token) in your Heroku https://dashboard.heroku.com/account[account settings].
+You can also retrieve it with the commandline.
+
+Copy the API key to your clipboard:
+
+.Terminal
+[source, shell]
+----
+heroku auth:token | pbcopy
+----
+
+==== Add the Heroku API key to GitLab
+
+To add custom env variables to your GitLab repo, we must go to the settings of our repository on https://gitlab.com[gitlab.com].
+
+.Browser (any window)
+
+1. Go to your project’s *Settings > CI/CD* and expand the *Variables* section.
+2. Click the *Add Variable* button.
+3. Add a variable named `HEROKU_API_KEY` with your Heroku API key (see above) as value.
+
+[IMPORTANT]
+You may need to delete the newline the auth token, when you used `pbcopy` to add it to your clipboard.
+
+==== Create the _.gitlab-ci.yml_ file
+
+Back in the terminal, create the _gitlab-ci.yml_ file:
+
+.Terminal
+[source, shell]
+----
+touch gitlab-ci.yml
+----
+
+Add the Heroku deploy stage to the _gitlab-ci.yml_ file:
+
+.gitlab-ci.yml
+[source,yaml]
+---
+// Important: Change {appname} to your heroku app name
+heroku:
+  type: deploy
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app={appname} --api-key=$HEROKU_API_KEY
+---
+
+[NOTE]
+This is a very basic example of a _gitlab-ci.yml_ file.
+Feel free to let it run tests or only deploy if you push to a specific branch.
+
+See the https://docs.gitlab.com/ee/ci/README.html[GitLab CI/CD documentation] for more information.
+
+
+=== Committing the code
+
+If you run `git status` you will see, that we updated _requirements.txt_, and added _Procfile_ and _gitlab-ci.yml_.
+
+Now we can stage and commit our changes:
+
+.Terminal (same window)
+[source, shell]
+----
+git add .
+git commit -m "Add deployment pipeline ☁️"
+----
+
+You see that we did not push our code yet.
+We will give this important step the individual chapter it deserves.
+
+=== Checklist
+
+==== ✔︎ Heroku app exists
+
+.Terminal
+[source,shell]
+----
+heroku apps
+----
+-> Your app is part of the heroku apps list
+
+==== ✔︎ Procfile is present
+
+==== ✔︎ Gunicorn is part of requirements
+
+==== ✔︎ django-heroku is part of our requirements
+
+==== ✔︎ gitlab-ci.yml is present

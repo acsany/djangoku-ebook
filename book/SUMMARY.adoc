@@ -6,4 +6,5 @@
 . link:chapters/taking_care_of_the_environment.adoc[Taking care of the Environment]
 . link:chapters/connecting_the_database.adoc[Connecting the database]
 . link:chapters/pushing_to_gitlab.adoc[Pushing To GitLab]
-. link:chapters/creating_the_heroku_highway.adoc[Creating the heroku highway]
+. link:chapters/building_our_pipeline.adoc[Building Our Pipeline]
+. link:chapters/autodeploy_to_heroku.adoc[Autodeploy to heroku]
