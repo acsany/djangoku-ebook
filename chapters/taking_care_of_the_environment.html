@@ -420,7 +420,7 @@ get_random_secret_key()</code></pre>
 <div class="listingblock">
 <div class="title">&apos;.env&apos;</div>
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">export DJANGO_SECRET_KEY=&apos;NEWLY%G3GENERATEDsecret_KEY!&apos;</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">export SECRET_KEY=&apos;NEWLY%G3GENERATEDsecret_KEY!&apos;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -429,7 +429,7 @@ get_random_secret_key()</code></pre>
 <div class="listingblock">
 <div class="title">djangoku/settings.py (Beginning of the file)</div>
 <div class="content">
-<pre class="highlight"><code class="language-Python" data-lang="Python">SECRET_KEY = os.getenv(<span class="hljs-string">&apos;DJANGO_SECRET_KEY&apos;</span>)</code></pre>
+<pre class="highlight"><code class="language-Python" data-lang="Python">SECRET_KEY = os.getenv(<span class="hljs-string">&apos;SECRET_KEY&apos;</span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -492,7 +492,7 @@ git commit -m &quot;Work with env variables 🔐&quot;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>→ Outputs the contents of the <em>.env</em> file including <code>DEBUG</code> and <code>DJANGO_SECRET_KEY</code></p>
+<p>→ Outputs the contents of the <em>.env</em> file including <code>DEBUG</code> and <code>SECRET_KEY</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -536,7 +536,7 @@ from django.conf import settings
 
 load_dotenv()
 
-settings.SECRET_KEY == os.getenv(&apos;DJANGO_SECRET_KEY&apos;)</code></pre>
+settings.SECRET_KEY == os.getenv(&apos;SECRET_KEY&apos;)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -587,7 +587,7 @@ settings.SECRET_KEY == os.getenv(&apos;DJANGO_SECRET_KEY&apos;)</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.5","depth":1,"next":{"title":"Connecting the database","level":"1.6","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.4","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-01-30T19:51:44.232Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-30T19:52:01.571Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.5","depth":1,"next":{"title":"Connecting the database","level":"1.6","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.4","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-01-31T20:07:31.001Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-31T20:07:52.966Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
