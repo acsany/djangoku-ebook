@@ -1,3 +1,25 @@
 == Autodeploy to heroku
 
 This chapter is short.
+But it is a celebratory one.
+We prepared everything in a way, so our production pipeline to Heroku is triggered by a push to our remote Git repository.
+So we will only do one thing and then sit and watch.
+
+Push the changes to GitLab:
+
+.Terminal (same window)
+[source, shell]
+----
+git push origin master
+----
+
+Now you can visit _CI/CD -> Pipeline_ on your GitLab project page to see the pipelines running.
+After that check out _Activity_ on your Heroku app page to see the build process.
+
+If everything worked out, you should see the Django placeholer page when you click the _Open app_ button on Heroku or visit your project url directly.
+
+=== It is live!
+Congratulations!
+You successfully deployed your Django app via GitLab to Heroku.
+
+Now you can work on your project and quickly ship new features -- deployment won’t be holding you back.
