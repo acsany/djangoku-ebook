@@ -252,7 +252,36 @@
 <h2 id="_autodeploy_to_heroku">Autodeploy to heroku</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter is short.</p>
+<p>This chapter is short.
+But it is a celebratory one.
+We prepared everything in a way, so our production pipeline to Heroku is triggered by a push to our remote Git repository.
+So we will only do one thing and then sit and watch.</p>
+</div>
+<div class="paragraph">
+<p>Push the changes to GitLab:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal (same window)</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git push origin master</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can visit <em>CI/CD → Pipeline</em> on your GitLab project page to see the pipelines running.
+After that check out <em>Activity</em> on your Heroku app page to see the build process.</p>
+</div>
+<div class="paragraph">
+<p>If everything worked out, you should see the Django placeholer page when you click the <em>Open app</em> button on Heroku or visit your project url directly.</p>
+</div>
+<div class="sect2">
+<h3 id="_it_is_live">It is live!</h3>
+<div class="paragraph">
+<p>Congratulations!
+You successfully deployed your Django app via GitLab to Heroku.</p>
+</div>
+<div class="paragraph">
+<p>Now you can work on your project and quickly ship new features — deployment won’t be holding you back.</p>
+</div>
 </div>
 </div>
 </div>
@@ -294,7 +323,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Autodeploy to heroku","level":"1.9","depth":1,"previous":{"title":"Building Our Pipeline","level":"1.8","depth":1,"path":"chapters/building_our_pipeline.adoc","ref":"chapters/building_our_pipeline.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/autodeploy_to_heroku.adoc","mtime":"2021-01-31T21:13:12.709Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-01-31T21:13:35.910Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Autodeploy to heroku","level":"1.9","depth":1,"previous":{"title":"Building Our Pipeline","level":"1.8","depth":1,"path":"chapters/building_our_pipeline.adoc","ref":"chapters/building_our_pipeline.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/autodeploy_to_heroku.adoc","mtime":"2021-02-05T15:49:26.935Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-05T15:49:50.451Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
