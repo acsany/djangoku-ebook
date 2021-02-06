@@ -5,7 +5,7 @@ In this chapter we will create a remote repository on GitLab to push our code to
 
 === Creating the GitLab project
 
-Gitlab has the functionality to create a new project by non-existant repositories by https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project[_just pushing to them_].
+GitLab has the functionality to create a new project by non-existant repositories by https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project[_just pushing to them_].
 The repository is set to _private_ by default.
 You can change that in the GitLab https://docs.gitlab.com/ee/public_access/public_access.html#how-to-change-project-visibility[project settings].
 

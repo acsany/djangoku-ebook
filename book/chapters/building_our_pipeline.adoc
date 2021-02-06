@@ -4,12 +4,12 @@ What we have so far is a basic Django project.
 With everything we did so far, we have a decent basis to extend the project by adding a superuser, apps, models, views, templates, etc.
 
 However, to quickly release new features, we need to concentrate on our deployment pipeline.
-When we push our code to our remote repository, we want GitLab to autodeploy our project to heroku.
-In order to do this, we must enhance our Django project to a proper heroku app and add a _.gitlab-ci.yml_ file.
+When we push our code to our remote repository, we want GitLab to autodeploy our project to Heroku.
+In order to do this, we must enhance our Django project to a proper Heroku app and add a _.gitlab-ci.yml_ file.
 
-=== Create a heroku app
+=== Create a Heroku app
 
-Verify that you are logged in with the correct heroku user:
+Verify that you are logged in with the correct Heroku user:
 
 .Terminal
 [source, shell]
@@ -17,9 +17,9 @@ Verify that you are logged in with the correct heroku user:
 heroku auth:whoami
 ----
 
-Choose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your heroku app.
+Choose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your Heroku app.
 
-Then create your heroku app with the _heroku CLI_:
+Then create your Heroku app with the _Heroku CLI_:
 
 .Terminal
 [source, shell]
@@ -140,7 +140,7 @@ Add the Heroku deploy stage to the _gitlab-ci.yml_ file:
 .gitlab-ci.yml
 [source,yaml]
 ---
-// Important: Change {appname} to your heroku app name
+// Important: Change {appname} to your Heroku app name
 heroku:
   type: deploy
   script:
@@ -182,7 +182,7 @@ There will be a special chapter for this.
 ----
 heroku apps
 ----
--> Your app is part of the heroku apps list
+-> Your app is part of the Heroku apps list
 
 ==== ✔︎ Procfile is present
 

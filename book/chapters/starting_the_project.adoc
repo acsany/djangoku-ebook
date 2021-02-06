@@ -91,7 +91,7 @@ Stage all changed files – that’s just the _.gitignore_ file as we ignored ev
 [source, shell]
 ----
 git add .
-git commit -m "Start Djangoku 🌱"
+git commit -m "Start djangoku 🌱"
 ----
 
 === Django. Finally!
@@ -175,7 +175,7 @@ git commit -m "Add Django project 🤠"
 
 As long as we don’t push anything to the server we don’t have to bother that much about dependencies.
 Still this is a good moment to freeze the Python modules we are using at this stage into a _requirements.txt_ file.
-With this file in our repository, GitLab and heroku will automatically install the exact versions of Python modules we use in their environment.
+With this file in our repository, GitLab and Heroku will automatically install the exact versions of Python modules we use in their environment.
 
 Let’s create and fill the _requirements.txt_ in one go:
 

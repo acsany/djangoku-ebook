@@ -1,6 +1,6 @@
 == What you need to start
 
-To take the most of this book you need basic knowledge in Python, Django and GIT.
+To take the most of this book you need basic knowledge in Python, Django and Git.
 That said the setup you will encounter in the next chapters is kept as basic as possible, so even beginners can follow along.
 
 This book will be based on the version stated in the list below.
@@ -23,7 +23,7 @@ You can follow this book on Windows and Linux as well by adjusting the commands 
 Make sure you have Python and Git installed on your system.
 The easiest way is to google `install python 3 on mac` and `install git on mac`.
 Chances are that Python and Git are already available on your system.
-While the git version is not that important, your Python version should be version 3 or above.
+While the Git version is not that important, your Python version should be version 3 or above.
 
 ==== PostgreSQL
 Generally speaking you can work with any database that Django and Heroku support.
@@ -39,8 +39,8 @@ To follow along you need an https://gitlab.com/users/sign_up[GitLab account].
 Why GitLab and not Github?
 
 Usually it does not matter _that much_ if you use GitLab or GitHub.
-GitHub is https://devcenter.heroku.com/articles/github-integration[comfortably integrated] in heroku.
-You can even create GitHub actions to create similar workflows for your heroku deployment, as we do with GitLab in this book.
+GitHub is https://devcenter.heroku.com/articles/github-integration[comfortably integrated] in Heroku.
+You can even create GitHub actions to create similar workflows for your Heroku deployment, as we do with GitLab in this book.
 I personally find working with the GitLab CI/CD pipeline more convenient.
 
 ==== Heroku account and Heroku CLI
@@ -69,7 +69,7 @@ Depending on how you installed Python 3, you have to use `python3 --version` or 
 ----
 git --version
 ----
--> Outputs any git version
+-> Outputs any Git version
 
 ==== ✔︎ PostgreSQL is installed
 .Terminal (any window)

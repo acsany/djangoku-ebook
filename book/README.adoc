@@ -1,4 +1,4 @@
-= DJANGOKU
+= djangoku
 
 == Introduction
 

@@ -1,4 +1,4 @@
-== Autodeploy to heroku
+== Autodeploy to Heroku
 
 We prepared everything, so our production pipeline to Heroku is triggered by a push to our remote Git repository.
 So we will only do one thing and then sit and watch.

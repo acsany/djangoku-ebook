@@ -13,7 +13,7 @@ Another advantage is, that we can set different values in different environments
 To learn more about best practices for web apps, check out https://12factor.net/[the twelve-factor methodology]
 
 Locally we will store the environment variables in an _.env_ file.
-Later on GitLab and heroku, those variables can be defined in the settings.
+Later on GitLab and Heroku, those variables can be defined in the settings.
 
 Create an _.env_ file:
 
