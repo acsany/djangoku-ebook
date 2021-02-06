@@ -3,7 +3,7 @@
 What we have so far is a basic Django project.
 With everything we did so far, we have a decent basis to extend the project by adding a superuser, apps, models, views, templates, etc.
 
-However, to quickly release new features in the future we continue to concentrate on our deployment pipeline.
+However, to quickly release new features, we need to concentrate on our deployment pipeline.
 When we push our code to our remote repository, we want GitLab to autodeploy our project to heroku.
 In order to do this, we must enhance our Django project to a proper heroku app and add a _.gitlab-ci.yml_ file.
 
@@ -17,7 +17,7 @@ Verify that you are logged in with the correct heroku user:
 heroku auth:whoami
 ----
 
-Chose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your heroku app.
+Choose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your heroku app.
 
 Then create your heroku app with the _heroku CLI_:
 
@@ -31,7 +31,7 @@ heroku apps:create {appname} --region {region}
 === Create a Procfile with Gunicorn
 
 All Heroku applications require a _Procfile_.
-This file file must be located in the root of the project.
+This file must be located in the root of the project.
 It declares how Heroku should run your application.
 
 For Django we will tell Heroku to run  a _Gunicorn_ server for us.
@@ -80,7 +80,7 @@ django_heroku.settings(locals())
 
 === Update our requirements
 
-With two new modules in our project, let’s update our requirements.
+Now that we have two new modules in our project, let’s update our requirements.
 
 Update _requirements.txt_:
 
@@ -125,7 +125,7 @@ To add custom env variables to your GitLab repo, we must go to the settings of o
 [IMPORTANT]
 You may need to delete the newline the auth token, when you used `pbcopy` to add it to your clipboard.
 
-==== Create the _.gitlab-ci.yml_ file
+==== Create the _gitlab-ci.yml_ file
 
 Back in the terminal, create the _gitlab-ci.yml_ file:
 
@@ -170,8 +170,8 @@ git add .
 git commit -m "Add deployment pipeline ☁️"
 ----
 
-You see that we did not push our code yet.
-We will give this important step the individual chapter it deserves.
+We did not push our code yet.
+There will be a special chapter for this.
 
 === Checklist
 
@@ -188,6 +188,6 @@ heroku apps
 
 ==== ✔︎ Gunicorn is part of requirements
 
-==== ✔︎ django-heroku is part of our requirements
+==== ✔︎ django-heroku is part of requirements
 
 ==== ✔︎ gitlab-ci.yml is present

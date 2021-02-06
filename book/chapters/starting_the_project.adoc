@@ -9,13 +9,13 @@ Then we will add Django to the mix.
 === Beginning with the basics
 
 Git will keep track of our file versioning and will be our gateway to distribute the files to GitLab and Heroku later.
-By using a virtual environment we have an isolated sandbox and don’t get confused with Python versions and modules that may be installed on the operating system already.
+By using a virtual environment we have an isolated sandbox avoiding confusion with Python versions and modules that may be installed on the operating system already.
 Both Git and a virtual environment are mandatory for a streamlined Heroku workflow.
 But it is generally a good practice to start any Python projects that way.
 
 [INFO]
-In this book the project will be called _"djangoku_dev"_ and you will see that the root path to the project is `~/Dropbox/GitMac/djangoku/djangoku_dev`.
-Obviously you will have your custom root path and maybe a more suitable project name –– Keep in mind that you have to adjust some commands accordingly.
+In this book the project will be called _"djangoku_dev"_ and you will see that the root path to the project is `djangoku_dev`.
+Obviously you will have your custom path and maybe a more suitable project name – Keep in mind that you have to adjust some commands accordingly.
 
 ==== Create the project folder
 
@@ -24,8 +24,8 @@ Create a project folder and navigate with the terminal to it:
 .Terminal (any window)
 [source, shell]
 ----
-mkdir ~/Dropbox/GitMac/djangoku/djangoku_dev
-cd ~/Dropbox/GitMac/djangoku/djangoku_dev
+mkdir djangoku_dev
+cd djangoku_dev
 ----
 
 [TIP]
@@ -45,9 +45,9 @@ git init
 [NOTE]
 It is https://tom.preston-werner.com/2010/08/23/readme-driven-development.html[a good idea] to create a Readme file at the beginning of a project.
 //TODO: Add chapter
-We will create this file later in chapter X when we push our repository to GitLab.
+We will create this file later when we push our repository to GitLab.
 Feel free to create it now and add information along the way.
-Just be careful to not add any sensitive data to it.
+Do not add any sensitive data to it.
 
 ==== Create the virtual environment
 
@@ -67,11 +67,11 @@ python3 -m venv virtualenv
 source virtualenv/bin/activate
 ----
 
-You can see that you have activated the virtual environment if the project foldername is wrapped in parenthesis e.g. _(virtualenv)_
+You can see that you have activated the virtual environment if the project foldername is between in parenthesis e.g. _(virtualenv)_
 
 This virtual environment folder is needed only locally.
 GitLab and Heroku will create their own environments later.
-Therefore it is important to not track the virtual environment folder with Git.
+Therefore it is important not to track the virtual environment folder with Git.
 
 Create a _.gitignore_ file and add _virtualenv_ to it:
 
@@ -100,7 +100,7 @@ After all this preparation and groundwork it is finally time to add Django.
 
 ==== Install Django
 
-Make sure the virtualenvironment is still activated by checking if the project folder is wrapped in parenthesis.
+Make sure the virtualenvironment is still activated by checking if the project folder is between in parenthesis.
 
 Install the Django module:
 
@@ -114,10 +114,6 @@ pip install django
 
 Now that the Django module was installed, we can start the actual Django project.
 Note that the command has a `.` at the end – this will make sure we create the Django project in the current directory and not create a new one.
-
-[INFO]
-In this book the Django project will be called _djangoku_.
-You can call your django project differently and adjust the commands accordingly.
 
 Start the Django project:
 
@@ -146,9 +142,9 @@ To stop the Django server press kbd:[Ctrl+c] while being in the Terminal.
 
 Django creates an SQLite database automatically.
 That’s the _db.sqlite3_ file in the root folder.
-We will not need this file and delete it later, because we will work with a PostgreSQL database.
+We will not need this file and will delete it later, because we will work with a PostgreSQL database.
 For now it is enough to not track the database file and add it to _.gitignore_.
-If we would only delete it without declaring an alternative database at the same time, Django just recreates _db.sqlite3_ everytime the server runs.
+When deleted without declaring an alternative database at the same time, Django just recreates _db.sqlite3_ everytime the server runs.
 
 Note that the command has two `>`, because we want to append a line to the _.gitignore_ file.
 
@@ -199,7 +195,6 @@ git commit -m "Add current project requirements 📜"
 ----
 
 === Checklist
-*Objective*: The project is tracked via Git and Django is present in an activated virtual environment.
 
 ==== ✔︎ Project is tracked via Git
 

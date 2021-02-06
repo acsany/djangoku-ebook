@@ -6,7 +6,7 @@ Locally we have to create the database on our own.
 
 === Creating the local PostgrSQL database
 // TODO: Add chapter
-As described in Chapter X, we ignored the SQLite database to create or own PostgreSQL database.
+As described before, we ignored the SQLite database to create our own PostgreSQL database.
 So let’s do this.
 
 Open postgres shell:
@@ -22,7 +22,7 @@ If the `psql` command fails, you may have forgotten to start the Postgres server
 
 
 You can use your own database name.
-I like to use a database name that is a combination out of the project name and the environment.
+I like to use a database name that is a combination of the project name and the environment.
 That way it is easy to find it when there are multiple databases.
 And it is clear which environment the database is meant for.
 
@@ -48,6 +48,7 @@ Quit postgres shell:
 === Adding database modules
 
 For Django and heroku to be able work with PostgrSQL databases, we need two additional modules.
+
 `psycopg2` is a database adapter, that enables Django to _talk_ to the PostgreSQL database.
 `dj-database-url` allows us to use database urls.
 This is not important in our local environment, but will be on Heroku.
@@ -77,7 +78,7 @@ Now that we have the prerequisites for our PostgreSQL database in place, it is t
 
 Finally we can get rid of the _db.sqlite3_ database.
 Just make sure that you first follow the steps to add the PostgreSQL databas below, before restarting the Django server.
-Otherwise Django will just recreate the file.
+If you don’t Django will just recreate the file.
 
 .Terminal
 [source, shell]
@@ -97,17 +98,18 @@ It will look like this:
 
 Before we add it to the _.env_ file, let’s look at the segments of the `DATABSE_URL`:
 
-| Segment | Info | Default value |
-|---|---|---|
-| `user` | The user you want to connect with to the database| `postgres` |
-| `password` | The password for the user | `` (no password) |
-| `host_name` | The database host | `localhost` |
-| `port` | The database port | `5432` |
-| `database_name` | The database name you chose before | `djangoku_local` |
+|===
+| Segment | Info | Default value
+| `user` | The user you want to connect with to the database| `postgres`
+| `password` | The password for the user | ` ` _(no password)_
+| `host_name` | The database host | `localhost`
+| `port` | The database port | `5432`
+| `database_name` | The database name you chose before | `djangoku_local`
+|===
 
 Let’s combine the segments to a functional url and add it to _.env_:
 
-.'.env'
+..env
 [source, shell]
 ----
 export DATABASE_URL=postgres://postgres@localhost:5432/djangoku_local

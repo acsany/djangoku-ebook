@@ -13,7 +13,7 @@ Another advantage is, that we can set different values in different environments
 To learn more about best practices for web apps, check out https://12factor.net/[the twelve-factor methodology]
 
 Locally we will store the environment variables in an _.env_ file.
-Later on GitLab and heroku, those variables can be set in the settings.
+Later on GitLab and heroku, those variables can be defined in the settings.
 
 Create an _.env_ file:
 
@@ -45,7 +45,7 @@ Add `python-dotenv` to the project:
 pip install python-dotenv
 ----
 
-Import  `os` and `python`dotenv` to the Django settings and load latter:
+Import  `os` and `python`dotenv` to the Django settings and load it:
 
 .djangoku/settings.py (Beginning of the file)
 [source, Python]
@@ -91,7 +91,7 @@ Add `DEBUG` variable to the _.env_ file and set it to `True`:
 echo "export DEBUG=True" >> .env
 ----
 
-If you re-run the Django server you will see that Django does run in debug mode again.
+When you re-run the Django server you will see that Django does run in debug mode again.
 
 === Add another secret to the _.env_ file
 
@@ -104,7 +104,7 @@ ____
 [INFO]
 See this (https://stackoverflow.com/a/47117966[_stack overflow_ answer]) to learn more about the purpose of the secret key.
 
-If you have a look in the settings file around _line 23_ you see the current value of Django’s `SECRET_KEY`.
+When you have a look in the settings file around _line 23_ you see the current value of Django’s `SECRET_KEY`.
 
 .djangoku/settings.py::23
 [source, Python]
@@ -151,7 +151,7 @@ Run `python manage.py runserver` to see if the server starts as expected.
 
 === Commit updates
 
-If you run `git status` you will see, that we changed _.gitignore_ and _djangoku/settings.py_.
+When you run `git status` you will see, that we changed _.gitignore_ and _djangoku/settings.py_.
 
 [IMPORTANT]
 You should not see the _.env_ file listed when you run `git status`.
@@ -165,7 +165,7 @@ Before we commit our changes, we have to update _requirements.txt_:
 pip freeze > requirements.txt
 ----
 
-If you run `git status` you should see that _requirements.txt_ is part of the modified files list.
+When you run `git status` you should see that _requirements.txt_ is part of the modified files list.
 
 Now we can stage and commit all changes:
 

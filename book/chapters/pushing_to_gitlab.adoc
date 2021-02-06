@@ -1,6 +1,6 @@
 == Pushing to GitLab
 
-So far we only have worked locally.
+So far we have only worked locally.
 In this chapter we will create a remote repository on GitLab to push our code to.
 
 === Creating the GitLab project
@@ -10,7 +10,7 @@ The repository is set to _private_ by default.
 You can change that in the GitLab https://docs.gitlab.com/ee/public_access/public_access.html#how-to-change-project-visibility[project settings].
 
 [NOTE]
-If you feel more comfortable to https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project[use the GitLab website], that’s fine to.
+If you feel more comfortable to https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project[use the GitLab website], that’s fine too.
 Just make sure the remote repository is empty, so we can push to it without  pulling it first and maybe even running into merge conflicts.
 
 .Terminal
@@ -36,7 +36,7 @@ git remote add origin git@gitlab.com:{username}/djangoku.git
 
 Since our project is still missing a Readme file, now is finally the time to create one.
 Feel free to add any content you want to the Readme file.
-Just make sure to nor add any sensitive data to it, as it will be tracked by Git and may be exposed to the public.
+Do not add any sensitive data to it, as it will be tracked by Git and may be exposed to the public.
 
 Create a _Readme.md_ file:
 

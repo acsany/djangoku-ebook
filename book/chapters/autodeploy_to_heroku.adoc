@@ -1,8 +1,6 @@
 == Autodeploy to heroku
 
-This chapter is short.
-But it is a celebratory one.
-We prepared everything in a way, so our production pipeline to Heroku is triggered by a push to our remote Git repository.
+We prepared everything, so our production pipeline to Heroku is triggered by a push to our remote Git repository.
 So we will only do one thing and then sit and watch.
 
 Push the changes to GitLab:
