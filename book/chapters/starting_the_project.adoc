@@ -36,7 +36,7 @@ Create the project folder in the Finder, open a new Terminal window, write `cd`,
 
 Initiate a new Git repository:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git init
@@ -60,7 +60,7 @@ You can name your virtual environment any way you want and adjust the commands a
 
 Create a new virtualenvironment in your project folder and activate it:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 python3 -m venv virtualenv
@@ -75,7 +75,7 @@ Therefore it is important not to track the virtual environment folder with Git.
 
 Create a _.gitignore_ file and add _virtualenv_ to it:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 echo virtualenv > .gitignore
@@ -87,7 +87,7 @@ Now that we have created the base layer for our project, we should do our first 
 
 Stage all changed files – that’s just the _.gitignore_ file as we ignored everything else – and commit them:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git add .
@@ -104,7 +104,7 @@ Make sure the virtualenvironment is still activated by checking if the project f
 
 Install the Django module:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 pip install django
@@ -117,7 +117,7 @@ Note that the command has a `.` at the end – this will make sure we create the
 
 Start the Django project:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 django-admin.py startproject djangoku .
@@ -127,7 +127,7 @@ If you look into your root project folder you should see that a file called _man
 
 Run Django:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 python manage.py runserver
@@ -153,7 +153,7 @@ There are other Django projects, where a SQLite database is good enough.
 Even then you should https://github.com/github/gitignore/blob/db0ef78b5ad1d3caf4cab3240467562360885613/Python.gitignore[always ignore] _.sqlite3_ files.
 
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 echo *.sqlite3 >> .gitignore
@@ -163,7 +163,7 @@ echo *.sqlite3 >> .gitignore
 
 Track the new files in Git:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git add .
@@ -187,7 +187,7 @@ pip freeze > requirements.txt
 
 Stage and commit _requirements.txt_:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git add requirements.txt
@@ -198,7 +198,7 @@ git commit -m "Add current project requirements 📜"
 
 ==== ✔︎ Project is tracked via Git
 
-.Terminal (same window)
+.Terminal
 [source,shell]
 ----
 git log
@@ -207,12 +207,12 @@ git log
 
 ==== ✔︎ Virtual environment is activated
 
-.Terminal (same window)
+.Terminal
 -> The root project folder is wrapped in parenthesis in the Terminal.
 
 ==== ✔︎ Virtual environment uses the correct Python
 
-.Terminal (same window)
+.Terminal
 [source,shell]
 ----
 which python
@@ -221,7 +221,7 @@ which python
 
 ==== ✔︎ Django is installed
 
-.Terminal (same window)
+.Terminal
 [source,shell]
 ----
 python -m django --version

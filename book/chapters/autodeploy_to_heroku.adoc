@@ -5,7 +5,7 @@ So we will only do one thing and then sit and watch.
 
 Push the changes to GitLab:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git push origin master

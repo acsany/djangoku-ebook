@@ -55,7 +55,7 @@ If you run `git status` you will see, that we added _Readme.md_.
 
 Now we can stage, commit and push it to GitLab:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git add .

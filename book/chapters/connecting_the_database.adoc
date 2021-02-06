@@ -151,7 +151,7 @@ If you run `git status` you will see, that we changed _requirements.txt_ and _dj
 
 Now we can stage and commit all changes:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git add .
@@ -197,7 +197,7 @@ settings.DATABASES['default']
 
 ====  ✔︎ Django runs correctly
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 python manage.py runserver

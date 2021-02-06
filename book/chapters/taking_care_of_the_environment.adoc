@@ -17,7 +17,7 @@ Later on GitLab and heroku, those variables can be defined in the settings.
 
 Create an _.env_ file:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 touch .env
@@ -27,7 +27,7 @@ Let’s ignore the _.env_ file to prevent Git from tracking the content of it.
 
 Add the _.env_ file to _.gitignore_:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 echo .env >> .gitignore
@@ -169,7 +169,7 @@ When you run `git status` you should see that _requirements.txt_ is part of the 
 
 Now we can stage and commit all changes:
 
-.Terminal (same window)
+.Terminal
 [source, shell]
 ----
 git add .
