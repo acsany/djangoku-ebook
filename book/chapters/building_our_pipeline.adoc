@@ -1,94 +1,8 @@
 == Building Our Pipeline
 
-What we have so far is a basic Django project.
-With everything we did so far, we have a decent basis to extend the project by adding a superuser, apps, models, views, templates, etc.
-
-However, to quickly release new features, we need to concentrate on our deployment pipeline.
+To quickly release new features, we need to concentrate on our deployment pipeline.
 When we push our code to our remote repository, we want GitLab to autodeploy our project to Heroku.
 In order to do this, we must enhance our Django project to a proper Heroku app and add a _.gitlab-ci.yml_ file.
-
-=== Create a Heroku app
-
-Verify that you are logged in with the correct Heroku user:
-
-.Terminal
-[source, shell]
-----
-heroku auth:whoami
-----
-
-Choose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your Heroku app.
-
-Then create your Heroku app with the _Heroku CLI_:
-
-.Terminal
-[source, shell]
-----
-## Important: Change {appname} to a unique app name and {region} to your preferred region.
-heroku apps:create {appname} --region {region}
-----
-
-=== Create a Procfile with Gunicorn
-
-All Heroku applications require a _Procfile_.
-This file must be located in the root of the project.
-It declares how Heroku should run your application.
-
-For Django we will tell Heroku to run  a _Gunicorn_ server for us.
-
-Create a _Procfile_:
-
-.Terminal
-[source, shell]
-----
-echo web: gunicorn djangoku.wsgi > Procfile
-----
-
-[NOTE]
-If you named your project differently, you need to adjust the command above accordingly.
-
-Install `gunicorn`:
-
-.Terminal
-[source, shell]
-----
-pip install gunicorn
-----
-
-=== Add `django-heroku`
-
-With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
-Especially the handling of settings, static files and logging is much easier with it.
-All required dependencies are downloaded automatically for us.
-
-Install `django-heroku`:
-
-.Terminal
-[source, shell]
-----
-pip install django-heroku
-----
-
-Add it to our _settings.py_ file:
-
-.djangoku/settings.py (At the bottom of the file)
-[source, Python]
-----
-import django_heroku
-django_heroku.settings(locals())
-----
-
-=== Update our requirements
-
-Now that we have two new modules in our project, let’s update our requirements.
-
-Update _requirements.txt_:
-
-.Terminal
-[source, shell]
-----
-pip freeze > requirements.txt
-----
 
 === Adding GitLab CI instructions
 
@@ -177,20 +91,5 @@ We did not push our code yet.
 There will be a special chapter for this.
 
 === Checklist
-
-==== ✔︎ Heroku app exists
-
-.Terminal
-[source,shell]
-----
-heroku apps
-----
--> Your app is part of the Heroku apps list
-
-==== ✔︎ Procfile is present
-
-==== ✔︎ Gunicorn is part of requirements
-
-==== ✔︎ django-heroku is part of requirements
 
 ==== ✔︎ .gitlab-ci.yml is present

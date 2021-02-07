@@ -1,0 +1,160 @@
+== Preparing Heroku
+
+What we have so far is a basic Django project.
+With everything we did so far, we have a decent basis to extend the project by adding a superuser, apps, models, views, templates, etc.
+
+=== Create a Heroku app
+
+Verify that you are logged in with the correct Heroku user:
+
+.Terminal
+[source, shell]
+----
+heroku auth:whoami
+----
+
+Choose a unqiue name and https://devcenter.heroku.com/articles/regions[region] for your Heroku app.
+
+Then create your Heroku app with the _Heroku CLI_:
+
+.Terminal
+[source, shell]
+----
+# Important: Change {appname} to a unique app name and {region} to your preferred region.
+heroku apps:create {appname} --region {region}
+----
+
+=== Add a new secret key to Heroku
+Heroku relies on env variables the same way we did on your local system.
+Heroku will set the URL to the database itself.
+But `SECRET_KEY` must be set by us.
+
+It is a good idea to create a separate `SECRET_KEY` for each environment.
+
+Let’s create a new one the same way as before.
+
+Start the Django shell in the terminal:
+
+.Terminal
+[source, shell]
+----
+python manage.py shell
+----
+
+.Terminal
+[source, shell]
+----
+from django.core.management.utils import get_random_secret_key
+
+get_random_secret_key()
+----
+
+Copy the output (e.g. `'NEWLY%G3GENERATEDsecret_KEY!'`).
+
+.Terminal
+[source, shell]
+----
+# Important:
+# * Change {appname} to your app name
+# * CHange {secretkey} to your secret key
+heroku config:set -a {appname} SECRET_KEY={secretkey}
+----
+
+[NOTE]
+You may also set the `DEBUG` env variable.
+The way we configured it in _settings.py_ it defaults to `False` when not set – which is recommended for the app on Heroku.
+
+
+=== Create a Procfile with Gunicorn
+
+All Heroku applications require a _Procfile_.
+This file must be located in the root of the project.
+It declares how Heroku should run your application.
+
+For Django we will tell Heroku to run  a _Gunicorn_ server for us.
+
+Create a _Procfile_:
+
+.Terminal
+[source, shell]
+----
+echo web: gunicorn djangoku.wsgi > Procfile
+----
+
+[NOTE]
+If you named your project differently, you need to adjust the command above accordingly.
+
+Install `gunicorn`:
+
+.Terminal
+[source, shell]
+----
+pip install gunicorn
+----
+
+=== Add `django-heroku`
+
+With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
+Especially the handling of settings, static files and logging is much easier with it.
+All required dependencies are downloaded automatically for us.
+
+Install `django-heroku`:
+
+.Terminal
+[source, shell]
+----
+pip install django-heroku
+----
+
+Add it to our _settings.py_ file:
+
+.djangoku/settings.py (At the bottom of the file)
+[source, Python]
+----
+import django_heroku
+django_heroku.settings(locals())
+----
+
+=== Update our requirements
+
+Now that we have two new modules in our project, let’s update our requirements.
+
+Update _requirements.txt_:
+
+.Terminal
+[source, shell]
+----
+pip freeze > requirements.txt
+----
+
+=== Committing the code
+
+If you run `git status` you will see, that we updated _requirements.txt_ and _settings.py_, and added _Procfile_.
+
+Now we can stage and commit our changes:
+
+.Terminal
+[source, shell]
+----
+git add .
+git commit -m "Prepare Heroku app 🔌"
+----
+
+=== Checklist
+
+==== ✔︎ Heroku app exists
+
+.Terminal
+[source,shell]
+----
+heroku apps
+----
+-> Your app is part of the Heroku apps list
+
+==== ✔︎ SECRET_KEY is set on Heroku
+
+==== ✔︎ Procfile is present
+
+==== ✔︎ Gunicorn is part of requirements
+
+==== ✔︎ django-heroku is part of requirements
