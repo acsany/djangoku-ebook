@@ -7,4 +7,5 @@
 . link:chapters/connecting_the_database.adoc[Connecting the database]
 . link:chapters/pushing_to_gitlab.adoc[Pushing To GitLab]
 . link:chapters/building_our_pipeline.adoc[Building Our Pipeline]
-. link:chapters/autodeploy_to_heroku.adoc[Autodeploy to Heroku]
+. link:chapters/autodeploy_to_heroku.adoc[Autodeploy to Heroku]. link:chapters/autodeploy_to_heroku.adoc[Autodeploy to Heroku]
+//. link:chapters/best_practices.adoc[Best Pracices]
