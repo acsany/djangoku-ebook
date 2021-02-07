@@ -1,0 +1,173 @@
+== Adding a page
+
+Currently we see a placeholder page when we visit the Django project in the browser.
+As wireframe for future additions, let’s create a minimal app in Django.
+
+The app will serve a welcome page when visiting the root of our project and contain some styling.
+With the welcome page we can see if Django works correctly even when the debug mode is deactivated.
+With the added styling, we will see if static files are served correctly.
+
+=== Create the app
+
+The purpose of this app is to serve static pages – so we name it _pages_.
+
+Create the _pages_ app:
+
+.Terminal
+[source, shell]
+----
+python manage.py startapp pages
+----
+
+Add the _pages_ app to `INSTALLED_APPS` in the settings file:
+
+.djangoku/settings.py (Around line 45)
+[source, Python]
+----
+INSTALLED_APPS = [
+    # Other installed apps like django.contrib.*
+    'pages',
+]
+----
+
+=== Add urls
+
+Now that the _pages_ app is present, we need to tell Django that we want to serve the _pages_ urls on root level.
+
+Include `pages.urls` to `urlpatterns` of the main _djangoku_ urls file:
+
+.djangoku/urls.py
+[source, Python]
+----
+from django.contrib import admin
+from django.urls import include, path
+
+# Do not forget to import `include` from django.urls
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('pages.urls'))
+]
+----
+
+Create an urls file for the _pages_ app:
+
+.Terminal
+[source, shell]
+----
+touch pages/urls.py
+----
+
+Add `welcome` path to _urls.py_:
+
+.pages/urls.py
+[source, Python]
+----
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.welcome, name='welcome'),
+]
+----
+
+=== Add welcome view
+
+The root of our project now directs to the _welcome_ view.
+This view does not exist yet; let’s create it!
+
+Add `welcome` function to _pages/views.py_
+
+.pages/views.py (Around line 4)
+[source, Python]
+----
+def welcome(request):
+    content = {
+        "welcome_msg": "Hello!",
+        }
+    template = "pages/welcome.html"
+    return render(request, template, content)
+----
+
+=== Add the welcome page template
+
+The view currently tries to render a template that does not exist yet.
+To keep the modular structure of our project, we create it in a subdirectory of the _pages_ app.
+
+Create the subdirectory for _pages_ templates and create the _welcome_ template:
+
+.Terminal
+[source, shell]
+----
+mkdir -p pages/templates/pages
+touch pages/templates/pages/welcome.html
+----
+
+[NOTE]
+The repetition of the app name in the path of the template is to prevent confusion between templates of the same name in different apps.
+
+Add content to the _welcome_ template:
+
+.pages/templates/pages/welcome.html
+[source, Python]
+----
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>djangoku</title>
+    <link rel="stylesheet" href="{% static 'css/pages.css' %}" type="text/css" />
+
+</head>
+
+<body>
+    <h1>{{welcome_msg}}</h1>
+</body>
+</html>
+----
+
+=== Add the CSS file
+
+As you can see we referenced a css file that does not exist yet.
+
+Create _pages.css_:
+
+.Terminal
+[source, shell]
+----
+mkdir -p pages/static/css
+touch pages/static/css/pages.css
+----
+
+Add basic styling to _pages.css_:
+
+.pages/static/css/pages.css
+[source, CSS]
+----
+body {
+    background-color: ghost;
+}
+
+h1 {
+    text-align: center;
+    font-family: monospace;
+}
+----
+
+=== Commit the code
+
+Now we can stage and commit our changes:
+
+.Terminal
+[source, shell]
+----
+git add .
+git commit -m "Add pages app 📔"
+----
+
+=== Checklist
+
+==== ✔︎ App is created
+==== ✔︎ App shows a welcome page

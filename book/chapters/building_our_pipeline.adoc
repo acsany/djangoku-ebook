@@ -74,7 +74,7 @@ Feel free to let it run tests or only deploy if you push to a specific branch.
 See the https://docs.gitlab.com/ee/ci/README.html[GitLab CI/CD documentation] for more information.
 
 
-=== Committing the code
+=== Commit the code
 
 If you run `git status` you will see, that we updated _requirements.txt_, and added _Procfile_ and _.gitlab-ci.yml_.
 

@@ -92,6 +92,27 @@ Install `gunicorn`:
 pip install gunicorn
 ----
 
+=== Expand allowed hosts
+
+Django checks for the _HTTP_HOST header_ of requests.
+It rejects requests coming from urls that are not part of the `ALLOWED_HOSTS` list in the settings.
+
+You need to add the url of your Heroku app and any custom domains that you may use for the project.
+
+Add the url of the Heroku app to _settings.py_:
+
+.djangoku/settings.py (Around line 33)
+[source, Python]
+----
+# Important:
+# Replace {appname} with your Heroku app name
+
+ALLOWED_HOSTS = [
+    "{appname}.herokuapp.com",
+]
+----
+
+
 === Add `django-heroku`
 
 With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
@@ -127,7 +148,7 @@ Update _requirements.txt_:
 pip freeze > requirements.txt
 ----
 
-=== Committing the code
+=== Commit the code
 
 If you run `git status` you will see, that we updated _requirements.txt_ and _settings.py_, and added _Procfile_.
 
@@ -156,5 +177,3 @@ heroku apps
 ==== ✔︎ Procfile is present
 
 ==== ✔︎ Gunicorn is part of requirements
-
-==== ✔︎ django-heroku is part of requirements

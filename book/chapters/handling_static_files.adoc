@@ -1,0 +1,75 @@
+== Handling static files
+
+At one point or another you want to add assets like CSS files, JavaScript files or images to your project.
+
+The https://devcenter.heroku.com/articles/s3[adviced solution] is to store the files externally (like an AWS S3 bucket).
+For prototypes or smaller projects it is easier to let Django serve the static files on production as well.
+While Django handles static files locally just fine, the Heroku app needs a bit of configuration.
+
+=== Add static files settings
+
+Unless otherwise configured, Heroku lo`collects static files when building the app.
+In order to run `collectstatic` succesfully, we need to enhance the settings.
+
+Add `STATIC_ROOT` and `STATICFILES_DIRS` to _djangoku/settings.py_
+
+.djangoku/settings.py (At the end of the file)
+[source, Python]
+----
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+----
+
+=== Add `django-heroku`
+
+With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
+Especially the handling of settings, static files and logging is much easier with it.
+All required dependencies are downloaded automatically for us.
+
+Install `django-heroku`:
+
+.Terminal
+[source, shell]
+----
+pip install django-heroku
+----
+
+Add it to our _settings.py_ file:
+
+.djangoku/settings.py (At the bottom of the file)
+[source, Python]
+----
+import django_heroku
+django_heroku.settings(locals())
+----
+
+=== Update our requirements
+
+Now that we have two new modules in our project, let’s update our requirements.
+
+Update _requirements.txt_:
+
+.Terminal
+[source, shell]
+----
+pip freeze > requirements.txt
+----
+
+=== Commit the code
+
+If you run `git status` you will see, that we updated _requirements.txt_ and _settings.py_.
+
+Now we can stage and commit our changes:
+
+.Terminal
+[source, shell]
+----
+git add .
+git commit -m "Configure static files handling 📂"
+----
+
+
+=== Checklist
+
+==== ✔︎ Collectstatic works
+
+==== ✔︎ django-heroku is part of requirements

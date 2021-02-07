@@ -3,6 +3,8 @@
 //. link:chapters/what_you_will_learn.adoc[What you will learn]
 . link:chapters/what_you_need_to_start.adoc[What you need to start]
 . link:chapters/starting_the_project.adoc[Starting the project]
+. link:chapters/adding_a_page.adoc[Adding a page]
+. link:chapters/handling_static_files.adoc[handling_staticfiles]
 . link:chapters/taking_care_of_the_environment.adoc[Taking care of the Environment]
 . link:chapters/connecting_the_database.adoc[Connecting the database]
 . link:chapters/preparing_heroku.adoc[Preparing Heroku]
