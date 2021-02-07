@@ -59,7 +59,7 @@
     <link rel="next" href="connecting_the_database.html" />
     
     
-    <link rel="prev" href="starting_the_project.html" />
+    <link rel="prev" href="handling_static_files.html" />
     
 
     </head>
@@ -127,7 +127,33 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="taking_care_of_the_environment.html">
+        <li class="chapter " data-level="1.4" data-path="adding_a_page.html">
+            
+                <a href="adding_a_page.html">
+            
+                    
+                    Adding a page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="handling_static_files.html">
+            
+                <a href="handling_static_files.html">
+            
+                    
+                    handling_staticfiles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="taking_care_of_the_environment.html">
             
                 <a href="taking_care_of_the_environment.html">
             
@@ -140,7 +166,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="connecting_the_database.html">
+        <li class="chapter " data-level="1.7" data-path="connecting_the_database.html">
             
                 <a href="connecting_the_database.html">
             
@@ -153,7 +179,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="pushing_to_gitlab.html">
+        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+            
+                <a href="preparing_heroku.html">
+            
+                    
+                    Preparing Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="pushing_to_gitlab.html">
             
                 <a href="pushing_to_gitlab.html">
             
@@ -166,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="building_our_pipeline.html">
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
             
                 <a href="building_our_pipeline.html">
             
@@ -179,12 +218,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="autodeploy_to_heroku.html">
+        <li class="chapter " data-level="1.11" data-path="autodeploy_to_heroku.html">
             
                 <a href="autodeploy_to_heroku.html">
             
                     
-                    Autodeploy to heroku
+                    Autodeploy to Heroku
             
                 </a>
             
@@ -256,13 +295,13 @@ Another advantage is, that we can set different values in different environments
 </div>
 <div class="paragraph">
 <p>Locally we will store the environment variables in an <em>.env</em> file.
-Later on GitLab and heroku, those variables can be set in the settings.</p>
+Later on GitLab and Heroku, those variables can be defined in the settings.</p>
 </div>
 <div class="paragraph">
 <p>Create an <em>.env</em> file:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">touch .env</code></pre>
 </div>
@@ -274,7 +313,7 @@ Later on GitLab and heroku, those variables can be set in the settings.</p>
 <p>Add the <em>.env</em> file to <em>.gitignore</em>:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">echo .env &gt;&gt; .gitignore</code></pre>
 </div>
@@ -295,7 +334,7 @@ Later on GitLab and heroku, those variables can be set in the settings.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Import  <code>os</code> and <code>python`dotenv</code> to the Django settings and load latter:</p>
+<p>Import  <code>os</code> and <code>python`dotenv</code> to the Django settings and load it:</p>
 </div>
 <div class="listingblock">
 <div class="title">djangoku/settings.py (Beginning of the file)</div>
@@ -366,7 +405,7 @@ Locally we want to continue to see debug messages.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you re-run the Django server you will see that Django does run in debug mode again.</p>
+<p>When you re-run the Django server you will see that Django does run in debug mode again.</p>
 </div>
 </div>
 <div class="sect2">
@@ -385,7 +424,7 @@ Locally we want to continue to see debug messages.</p>
 <p>See this (<a href="https://stackoverflow.com/a/47117966" target="_blank"><em>stack overflow</em> answer</a>) to learn more about the purpose of the secret key.</p>
 </div>
 <div class="paragraph">
-<p>If you have a look in the settings file around <em>line 23</em> you see the current value of Django’s <code>SECRET_KEY</code>.</p>
+<p>When you have a look in the settings file around <em>line 23</em> you see the current value of Django’s <code>SECRET_KEY</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">djangoku/settings.py::23</div>
@@ -439,7 +478,7 @@ get_random_secret_key()</code></pre>
 <div class="sect2">
 <h3 id="_commit_updates">Commit updates</h3>
 <div class="paragraph">
-<p>If you run <code>git status</code> you will see, that we changed <em>.gitignore</em> and <em>djangoku/settings.py</em>.</p>
+<p>When you run <code>git status</code> you will see, that we changed <em>.gitignore</em> and <em>djangoku/settings.py</em>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -464,13 +503,13 @@ If you do, check if it was added correctly to <em>.gitignore</em>.
 </div>
 </div>
 <div class="paragraph">
-<p>If you run <code>git status</code> you should see that <em>requirements.txt</em> is part of the modified files list.</p>
+<p>When you run <code>git status</code> you should see that <em>requirements.txt</em> is part of the modified files list.</p>
 </div>
 <div class="paragraph">
 <p>Now we can stage and commit all changes:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add .
 git commit -m &quot;Work with env variables 🔐&quot;</code></pre>
@@ -571,7 +610,7 @@ settings.SECRET_KEY == os.getenv(&apos;SECRET_KEY&apos;)</code></pre>
 
             
                 
-                <a href="starting_the_project.html" class="navigation navigation-prev " aria-label="Previous page: Starting the project">
+                <a href="handling_static_files.html" class="navigation navigation-prev " aria-label="Previous page: handling_staticfiles">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -587,7 +626,7 @@ settings.SECRET_KEY == os.getenv(&apos;SECRET_KEY&apos;)</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.4","depth":1,"next":{"title":"Connecting the database","level":"1.5","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.3","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-02-06T14:40:43.750Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-06T14:41:09.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.6","depth":1,"next":{"title":"Connecting the database","level":"1.7","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"previous":{"title":"handling_staticfiles","level":"1.5","depth":1,"path":"chapters/handling_static_files.adoc","ref":"chapters/handling_static_files.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

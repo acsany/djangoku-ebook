@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>Building Our Pipeline · HonKit</title>
+        <title>Preparing Heroku · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.6.16">
@@ -56,10 +56,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="autodeploy_to_heroku.html" />
+    <link rel="next" href="pushing_to_gitlab.html" />
     
     
-    <link rel="prev" href="pushing_to_gitlab.html" />
+    <link rel="prev" href="connecting_the_database.html" />
     
 
     </head>
@@ -179,7 +179,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+        <li class="chapter active" data-level="1.8" data-path="preparing_heroku.html">
             
                 <a href="preparing_heroku.html">
             
@@ -205,7 +205,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10" data-path="building_our_pipeline.html">
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
             
                 <a href="building_our_pipeline.html">
             
@@ -261,7 +261,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Building Our Pipeline</a>
+        <a href=".." >Preparing Heroku</a>
     </h1>
 </div>
 
@@ -277,111 +277,77 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="sect1">
-<h2 id="_building_our_pipeline">Building Our Pipeline</h2>
+<h2 id="_preparing_heroku">Preparing Heroku</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To quickly release new features, we need to concentrate on our deployment pipeline.
-When we push our code to our remote repository, we want GitLab to autodeploy our project to Heroku.
-In order to do this, we must enhance our Django project to a proper Heroku app and add a <em>.gitlab-ci.yml</em> file.</p>
+<p>What we have so far is a basic Django project.
+With everything we did so far, we have a decent basis to extend the project by adding a superuser, apps, models, views, templates, etc.</p>
 </div>
 <div class="sect2">
-<h3 id="_adding_gitlab_ci_instructions">Adding GitLab CI instructions</h3>
+<h3 id="_create_a_heroku_app">Create a Heroku app</h3>
 <div class="paragraph">
-<p>Now that our Heroku requirements are fulfilled, we need to tell GitLab to deploy our code to Heroku on push.
-We do this by adding a CI/CD pipeline to our remote repository.
-GitLab creates this pipeline automatically when a <code>.gitlab-ci.yml</code> file is present in the root of the repository.</p>
-</div>
-<div class="paragraph">
-<p>Our <code>.gitlab-ci.yml</code> contain instructions about connecting with Heroku.
-The authorization will be done by an env variable named <code>HEROKU_PRODUCTION_API_KEY</code>.</p>
-</div>
-<div class="sect3">
-<h4 id="_get_your_heroku_api_key">Get your Heroku API key</h4>
-<div class="paragraph">
-<p>You can find your Heroku API key (aka. auth token) in your Heroku <a href="https://dashboard.heroku.com/account" target="_blank">account settings</a>.
-You can also retrieve it with the commandline.</p>
-</div>
-<div class="paragraph">
-<p>Copy the API key to your clipboard:</p>
+<p>Verify that you are logged in with the correct Heroku user:</p>
 </div>
 <div class="listingblock">
 <div class="title">Terminal</div>
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">heroku auth:token | pbcopy</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">heroku auth:whoami</code></pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_add_the_heroku_api_key_to_gitlab">Add the Heroku API key to GitLab</h4>
 <div class="paragraph">
-<p>To add custom env variables to your GitLab repo, we must go to the settings of our repository on <a href="https://gitlab.com" target="_blank">gitlab.com</a>.</p>
+<p>Choose a unqiue name and <a href="https://devcenter.heroku.com/articles/regions" target="_blank">region</a> for your Heroku app.</p>
 </div>
-<div class="olist arabic">
-<div class="title">Browser (any window)</div>
-<ol class="arabic">
-<li>
-<p>Go to your project’s <strong>Settings &gt; CI/CD</strong> and expand the <strong>Variables</strong> section.</p>
-</li>
-<li>
-<p>Click the <strong>Add Variable</strong> button.</p>
-</li>
-<li>
-<p>Add a variable named <code>HEROKU_API_KEY</code> with your Heroku API key (see above) as value.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-You may need to delete the newline the auth token, when you used <code>pbcopy</code> to add it to your clipboard.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_the_gitlab_ci_yml_file">Create the <em>.gitlab-ci.yml</em> file</h4>
 <div class="paragraph">
-<p>Back in the terminal, create the <em>gitlab-ci.yml</em> file:</p>
+<p>Then create your Heroku app with the <em>Heroku CLI</em>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Terminal</div>
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">touch -gitlab-ci.yml</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> Important: Change {appname} to a unique app name and {region} to your preferred region.</span>
+heroku apps:create {appname} --region {region}</code></pre>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Don’t forget the <code>.</code> at the beginning of the file name.
-</td>
-</tr>
-</table>
+</div>
+<div class="sect2">
+<h3 id="_add_a_new_secret_key_to_heroku">Add a new secret key to Heroku</h3>
+<div class="paragraph">
+<p>Heroku relies on env variables the same way we did on your local system.
+Heroku will set the URL to the database itself.
+But <code>SECRET_KEY</code> must be set by us.</p>
 </div>
 <div class="paragraph">
-<p>Add the Heroku deploy stage to the <em>.gitlab-ci.yml</em> file:</p>
+<p>It is a good idea to create a separate <code>SECRET_KEY</code> for each environment.</p>
+</div>
+<div class="paragraph">
+<p>Let’s create a new one the same way as before.</p>
+</div>
+<div class="paragraph">
+<p>Start the Django shell in the terminal:</p>
 </div>
 <div class="listingblock">
-<div class="title">.gitlab-ci.yml</div>
+<div class="title">Terminal</div>
 <div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml"><span class="hljs-meta">---</span>
-<span class="hljs-string">//</span> <span class="hljs-attr">Important:</span> <span class="hljs-string">Change</span> {<span class="hljs-string">appname</span>} <span class="hljs-string">to</span> <span class="hljs-string">your</span> <span class="hljs-string">Heroku</span> <span class="hljs-string">app</span> <span class="hljs-string">name</span>
-<span class="hljs-attr">heroku:</span>
-  <span class="hljs-attr">type:</span> <span class="hljs-string">deploy</span>
-  <span class="hljs-attr">script:</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">apt-get</span> <span class="hljs-string">update</span> <span class="hljs-string">-qy</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">apt-get</span> <span class="hljs-string">install</span> <span class="hljs-string">-y</span> <span class="hljs-string">ruby-dev</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">gem</span> <span class="hljs-string">install</span> <span class="hljs-string">dpl</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">dpl</span> <span class="hljs-string">--provider=heroku</span> <span class="hljs-string">--app={appname}</span> <span class="hljs-string">--api-key=$HEROKU_API_KEY</span>
-<span class="hljs-meta">---</span></code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py shell</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">from django.core.management.utils import get_random_secret_key
+
+get_random_secret_key()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Copy the output (e.g. <code>&apos;NEWLY%G3GENERATEDsecret_KEY!&apos;</code>).</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell"><span class="hljs-meta">#</span><span class="bash"> Important:</span>
+<span class="hljs-meta">#</span><span class="bash"> * Change {appname} to your app name</span>
+<span class="hljs-meta">#</span><span class="bash"> * CHange {secretkey} to your secret key</span>
+heroku config:set -a {appname} SECRET_KEY={secretkey}</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -391,21 +357,97 @@ Don’t forget the <code>.</code> at the beginning of the file name.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This is a very basic example of a <em>.gitlab-ci.yml</em> file.
-Feel free to let it run tests or only deploy if you push to a specific branch.
+You may also set the <code>DEBUG</code> env variable.
+The way we configured it in <em>settings.py</em> it defaults to <code>False</code> when not set – which is recommended for the app on Heroku.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_a_procfile_with_gunicorn">Create a Procfile with Gunicorn</h3>
+<div class="paragraph">
+<p>All Heroku applications require a <em>Procfile</em>.
+This file must be located in the root of the project.
+It declares how Heroku should run your application.</p>
+</div>
+<div class="paragraph">
+<p>For Django we will tell Heroku to run  a <em>Gunicorn</em> server for us.</p>
+</div>
+<div class="paragraph">
+<p>Create a <em>Procfile</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">echo web: gunicorn djangoku.wsgi &gt; Procfile</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you named your project differently, you need to adjust the command above accordingly.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://docs.gitlab.com/ee/ci/README.html" target="_blank">GitLab CI/CD documentation</a> for more information.</p>
+<p>Install <code>gunicorn</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip install gunicorn</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expand_allowed_hosts">Expand allowed hosts</h3>
+<div class="paragraph">
+<p>Django checks for the <em>HTTP_HOST header</em> of requests.
+It rejects requests coming from urls that are not part of the <code>ALLOWED_HOSTS</code> list in the settings.</p>
+</div>
+<div class="paragraph">
+<p>You need to add the url of your Heroku app and any custom domains that you may use for the project.</p>
+</div>
+<div class="paragraph">
+<p>Add the url of the Heroku app to <em>settings.py</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py (Around line 33)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-comment"># Important:</span>
+<span class="hljs-comment"># Replace {appname} with your Heroku app name</span>
+
+ALLOWED_HOSTS = [
+    <span class="hljs-string">&quot;{appname}.herokuapp.com&quot;</span>,
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_our_requirements">Update our requirements</h3>
+<div class="paragraph">
+<p>Now that we have a new module in our project, let’s update our requirements.</p>
+</div>
+<div class="paragraph">
+<p>Update <em>requirements.txt</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">pip freeze &gt; requirements.txt</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_commit_the_code">Commit the code</h3>
 <div class="paragraph">
-<p>If you run <code>git status</code> you will see, that we updated <em>requirements.txt</em>, and added <em>Procfile</em> and <em>.gitlab-ci.yml</em>.</p>
+<p>If you run <code>git status</code> you will see, that we updated <em>requirements.txt</em> and <em>settings.py</em>, and added <em>Procfile</em>.</p>
 </div>
 <div class="paragraph">
 <p>Now we can stage and commit our changes:</p>
@@ -414,18 +456,34 @@ Feel free to let it run tests or only deploy if you push to a specific branch.
 <div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add .
-git commit -m &quot;Add deployment pipeline ☁️&quot;</code></pre>
+git commit -m &quot;Prepare Heroku app 🔌&quot;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>We did not push our code yet.
-There will be a special chapter for this.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_checklist">Checklist</h3>
 <div class="sect3">
-<h4 id="_gitlab_ci_yml_is_present">✔︎ .gitlab-ci.yml is present</h4>
+<h4 id="_heroku_app_exists">✔︎ Heroku app exists</h4>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">heroku apps</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ Your app is part of the Heroku apps list</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_secret_key_is_set_on_heroku">✔︎ SECRET_KEY is set on Heroku</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_procfile_is_present">✔︎ Procfile is present</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_gunicorn_is_part_of_requirements">✔︎ Gunicorn is part of requirements</h4>
 
 </div>
 </div>
@@ -457,12 +515,12 @@ There will be a special chapter for this.</p>
 
             
                 
-                <a href="pushing_to_gitlab.html" class="navigation navigation-prev " aria-label="Previous page: Pushing To GitLab">
+                <a href="connecting_the_database.html" class="navigation navigation-prev " aria-label="Previous page: Connecting the database">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="autodeploy_to_heroku.html" class="navigation navigation-next " aria-label="Next page: Autodeploy to Heroku">
+                <a href="pushing_to_gitlab.html" class="navigation navigation-next " aria-label="Next page: Pushing To GitLab">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -473,7 +531,7 @@ There will be a special chapter for this.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Building Our Pipeline","level":"1.10","depth":1,"next":{"title":"Autodeploy to Heroku","level":"1.11","depth":1,"path":"chapters/autodeploy_to_heroku.adoc","ref":"chapters/autodeploy_to_heroku.adoc","articles":[]},"previous":{"title":"Pushing To GitLab","level":"1.9","depth":1,"path":"chapters/pushing_to_gitlab.adoc","ref":"chapters/pushing_to_gitlab.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/building_our_pipeline.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Preparing Heroku","level":"1.8","depth":1,"next":{"title":"Pushing To GitLab","level":"1.9","depth":1,"path":"chapters/pushing_to_gitlab.adoc","ref":"chapters/pushing_to_gitlab.adoc","articles":[]},"previous":{"title":"Connecting the database","level":"1.7","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/preparing_heroku.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

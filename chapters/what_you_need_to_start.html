@@ -127,7 +127,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="taking_care_of_the_environment.html">
+        <li class="chapter " data-level="1.4" data-path="adding_a_page.html">
+            
+                <a href="adding_a_page.html">
+            
+                    
+                    Adding a page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="handling_static_files.html">
+            
+                <a href="handling_static_files.html">
+            
+                    
+                    handling_staticfiles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="taking_care_of_the_environment.html">
             
                 <a href="taking_care_of_the_environment.html">
             
@@ -140,7 +166,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="connecting_the_database.html">
+        <li class="chapter " data-level="1.7" data-path="connecting_the_database.html">
             
                 <a href="connecting_the_database.html">
             
@@ -153,7 +179,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="pushing_to_gitlab.html">
+        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+            
+                <a href="preparing_heroku.html">
+            
+                    
+                    Preparing Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="pushing_to_gitlab.html">
             
                 <a href="pushing_to_gitlab.html">
             
@@ -166,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="building_our_pipeline.html">
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
             
                 <a href="building_our_pipeline.html">
             
@@ -179,12 +218,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="autodeploy_to_heroku.html">
+        <li class="chapter " data-level="1.11" data-path="autodeploy_to_heroku.html">
             
                 <a href="autodeploy_to_heroku.html">
             
                     
-                    Autodeploy to heroku
+                    Autodeploy to Heroku
             
                 </a>
             
@@ -241,27 +280,13 @@
 <h2 id="_what_you_need_to_start">What you need to start</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since this book tackles a rather specific use case, I assume that you have basic knowledge in Python, Django and GIT.
+<p>To take the most of this book you need basic knowledge in Python, Django and Git.
 That said the setup you will encounter in the next chapters is kept as basic as possible, so even beginners can follow along.</p>
 </div>
 <div class="paragraph">
 <p>This book will be based on the version stated in the list below.
-However, it is possible to follow the steps with different versions – either older or newer.
-The general steps will be the same.
-But there might be differences in details.</p>
-</div>
-<div class="paragraph">
-<p>On a personal note:
-When I started learning programming, I often abandonded tutorials and books, because <em>my</em> code didn’t work as the one in the book.
-I want you to succeed and finish this book.
-If your code does not work as epxected or you encounter a roadblock, don’t hesitate to contact me and I will try to help out.</p>
-</div>
-<div class="sect2">
-<h3 id="_a_word_about_operating_systems">A word about operating systems</h3>
-<div class="paragraph">
-<p>The screenshots you will see in this book are taken on a Mac.
-But you can follow this book on Windows and Linux aswell.</p>
-</div>
+It is possible to follow the steps with different versions.
+The general steps will be the same, but there might be small differences.</p>
 </div>
 <div class="sect2">
 <h3 id="_prerequisites">Prerequisites</h3>
@@ -284,13 +309,27 @@ But you can follow this book on Windows and Linux aswell.</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This version of the book assumes you are using
+MacOS.
+You can follow this book on Windows and Linux as well by adjusting the commands accordingly.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="_python_and_git">Python and Git</h4>
 <div class="paragraph">
-<p>Please make sure you have Python and Git installed on your system.
-The easiest way is to google e.g. <code>install python 3 on mac</code> and <code>install git on mac</code> and follow the best results along.
+<p>Make sure you have Python and Git installed on your system.
+The easiest way is to google <code>install python 3 on mac</code> and <code>install git on mac</code>.
 Chances are that Python and Git are already available on your system.
-While the git version is not that important, your Python version should be greater than version 3.</p>
+While the Git version is not that important, your Python version should be version 3 or above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -299,8 +338,7 @@ While the git version is not that important, your Python version should be great
 <p>Generally speaking you can work with any database that Django and Heroku support.
 (Note: <a href="https://devcenter.heroku.com/articles/sqlite3" target="_blank">SQLite</a> is not supported).
 This book is based on PostgreSQL, because you don’t need any additional elements on Heroku and it is easy to setup on Django.
-Since we are only setting up the database and not do fancy interactions with it, the PostgreSQL version you are using is not significant.
-While it is alway a good idea to stay recent when starting new projects, you may stick to a version you already have on your system.
+Since we are only setting up the database and not do <em>specific</em> interactions with it, the PostgreSQL version you are using is not significant.
 To see if your version works with Heroku, see <a href="https://devcenter.heroku.com/articles/heroku-postgresql#version-support" target="_blank">this list</a>.</p>
 </div>
 </div>
@@ -314,8 +352,8 @@ To see if your version works with Heroku, see <a href="https://devcenter.heroku.
 </div>
 <div class="paragraph">
 <p>Usually it does not matter <em>that much</em> if you use GitLab or GitHub.
-GitHub is <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">comfortably integrated</a> in heroku.
-You can even create GitHub actions to create similar workflows for your heroku deployment, as we do with GitLab in this book.
+GitHub is <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">comfortably integrated</a> in Heroku.
+You can even create GitHub actions to create similar workflows for your Heroku deployment, as we do with GitLab in this book.
 I personally find working with the GitLab CI/CD pipeline more convenient.</p>
 </div>
 </div>
@@ -332,9 +370,6 @@ The good thing about Heroku is, that it is free (how we use it) and scalable (if
 </div>
 <div class="sect2">
 <h3 id="_checklist">Checklist</h3>
-<div class="paragraph">
-<p><strong>Objective:</strong> All prerequisites are fulfilled.</p>
-</div>
 <div class="sect3">
 <h4 id="_python_3_is_installed">✔︎ Python 3+ is installed</h4>
 <div class="listingblock">
@@ -368,7 +403,7 @@ Depending on how you installed Python 3, you have to use <code>python3 --version
 </div>
 </div>
 <div class="paragraph">
-<p>→ Outputs any git version</p>
+<p>→ Outputs any Git version</p>
 </div>
 </div>
 <div class="sect3">
@@ -448,7 +483,7 @@ Depending on how you installed Python 3, you have to use <code>python3 --version
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What you need to start","level":"1.2","depth":1,"next":{"title":"Starting the project","level":"1.3","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.adoc","ref":"README.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/what_you_need_to_start.adoc","mtime":"2021-02-06T14:40:43.750Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-06T14:41:09.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What you need to start","level":"1.2","depth":1,"next":{"title":"Starting the project","level":"1.3","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.adoc","ref":"README.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/what_you_need_to_start.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

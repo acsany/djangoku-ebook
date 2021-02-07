@@ -1,0 +1,626 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Adding a page · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.6.16">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="handling_static_files.html" />
+    
+    
+    <link rel="prev" href="starting_the_project.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="what_you_need_to_start.html">
+            
+                <a href="what_you_need_to_start.html">
+            
+                    
+                    What you need to start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="starting_the_project.html">
+            
+                <a href="starting_the_project.html">
+            
+                    
+                    Starting the project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="adding_a_page.html">
+            
+                <a href="adding_a_page.html">
+            
+                    
+                    Adding a page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="handling_static_files.html">
+            
+                <a href="handling_static_files.html">
+            
+                    
+                    handling_staticfiles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="taking_care_of_the_environment.html">
+            
+                <a href="taking_care_of_the_environment.html">
+            
+                    
+                    Taking care of the Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="connecting_the_database.html">
+            
+                <a href="connecting_the_database.html">
+            
+                    
+                    Connecting the database
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+            
+                <a href="preparing_heroku.html">
+            
+                    
+                    Preparing Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="pushing_to_gitlab.html">
+            
+                <a href="pushing_to_gitlab.html">
+            
+                    
+                    Pushing To GitLab
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
+            
+                <a href="building_our_pipeline.html">
+            
+                    
+                    Building Our Pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="autodeploy_to_heroku.html">
+            
+                <a href="autodeploy_to_heroku.html">
+            
+                    
+                    Autodeploy to Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Adding a page</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="sect1">
+<h2 id="_adding_a_page">Adding a page</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently we see a placeholder page when we visit the Django project in the browser.
+As a wireframe for future additions, let’s create a minimal app in Django.</p>
+</div>
+<div class="paragraph">
+<p>The app will serve a welcome page when visiting the root of our project and contain some styling.
+With the welcome page we can see if Django works correctly even when the debug mode is deactivated.
+With the added styling, we will see if static files are served correctly.</p>
+</div>
+<div class="sect2">
+<h3 id="_create_the_app">Create the app</h3>
+<div class="paragraph">
+<p>The purpose of this app is to serve static pages – so we name it <em>pages</em>.</p>
+</div>
+<div class="paragraph">
+<p>Create the <em>pages</em> app:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py startapp pages</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add the <em>pages</em> app to <code>INSTALLED_APPS</code> in the settings file:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/settings.py (Around line 45)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python">INSTALLED_APPS = [
+    <span class="hljs-comment"># Other installed apps like django.contrib.*</span>
+    <span class="hljs-string">&apos;pages&apos;</span>,
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_urls">Add urls</h3>
+<div class="paragraph">
+<p>Now that the <em>pages</em> app is present, we need to tell Django that we want to serve the <em>pages</em> urls on root level.</p>
+</div>
+<div class="paragraph">
+<p>Include <code>pages.urls</code> to <code>urlpatterns</code> of the main <em>djangoku</em> urls file:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/urls.py</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> include, path
+
+<span class="hljs-comment"># Do not forget to import `include` from django.urls</span>
+urlpatterns = [
+    path(<span class="hljs-string">&apos;admin/&apos;</span>, admin.site.urls),
+    path(<span class="hljs-string">&apos;&apos;</span>, include(<span class="hljs-string">&apos;pages.urls&apos;</span>))
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create an urls file for the <em>pages</em> app:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">touch pages/urls.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add <code>welcome</code> path to <em>urls.py</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">pages/urls.py</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+urlpatterns = [
+    path(<span class="hljs-string">&apos;&apos;</span>, views.welcome, name=<span class="hljs-string">&apos;welcome&apos;</span>),
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_welcome_view">Add welcome view</h3>
+<div class="paragraph">
+<p>The root of our project now directs to the <em>welcome</em> view.
+This view does not exist yet; let’s create it!</p>
+</div>
+<div class="paragraph">
+<p>Add <code>welcome</code> function to <em>pages/views.py</em></p>
+</div>
+<div class="listingblock">
+<div class="title">pages/views.py (Around line 4)</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">welcome</span>(<span class="hljs-params">request</span>):</span>
+    content = {
+        <span class="hljs-string">&quot;welcome_msg&quot;</span>: <span class="hljs-string">&quot;Hello!&quot;</span>,
+        }
+    template = <span class="hljs-string">&quot;pages/welcome.html&quot;</span>
+    <span class="hljs-keyword">return</span> render(request, template, content)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_the_welcome_page_template">Add the welcome page template</h3>
+<div class="paragraph">
+<p>The view currently tries to render a template that does not exist yet.
+To keep the modular structure of our project, we create it in a subdirectory of the <em>pages</em> app.</p>
+</div>
+<div class="paragraph">
+<p>Create the subdirectory for <em>pages</em> templates and create the <em>welcome</em> template:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">mkdir -p pages/templates/pages
+touch pages/templates/pages/welcome.html</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The repetition of the app name in the path of the template is to prevent confusion between templates of the same name in different apps.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add content to the <em>welcome</em> template:</p>
+</div>
+<div class="listingblock">
+<div class="title">pages/templates/pages/welcome.html</div>
+<div class="content">
+<pre class="highlight"><code class="language-HTML" data-lang="HTML">{​% load static %}
+
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>djangoku<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{​% static &apos;css/pages.css&apos; %}&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Do not just copy paste the text from above.
+Because of rendering reasons there are non visible <em>zero-width spaces</em> between <code>{</code> and <code>%</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_the_css_file">Add the CSS file</h3>
+<div class="paragraph">
+<p>As you can see we referenced a css file that does not exist yet.</p>
+</div>
+<div class="paragraph">
+<p>Create <em>pages.css</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">mkdir -p pages/static/css
+touch pages/static/css/pages.css</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add basic styling to <em>pages.css</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">pages/static/css/pages.css</div>
+<div class="content">
+<pre class="highlight"><code class="language-CSS" data-lang="CSS"><span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background-color</span>: ghost;
+}
+
+<span class="hljs-selector-tag">h1</span> {
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">font-family</span>: monospace;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_commit_the_code">Commit the code</h3>
+<div class="paragraph">
+<p>Now we can stage and commit our changes:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">git add .
+git commit -m &quot;Add pages app 📔&quot;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checklist">Checklist</h3>
+<div class="sect3">
+<h4 id="_app_is_created">✔︎ App is created</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_app_shows_a_welcome_page">✔︎ App shows a welcome page</h4>
+
+</div>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="starting_the_project.html" class="navigation navigation-prev " aria-label="Previous page: Starting the project">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="handling_static_files.html" class="navigation navigation-next " aria-label="Next page: handling_staticfiles">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Adding a page","level":"1.4","depth":1,"next":{"title":"handling_staticfiles","level":"1.5","depth":1,"path":"chapters/handling_static_files.adoc","ref":"chapters/handling_static_files.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.3","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/adding_a_page.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -59,7 +59,7 @@
     <link rel="next" href="building_our_pipeline.html" />
     
     
-    <link rel="prev" href="connecting_the_database.html" />
+    <link rel="prev" href="preparing_heroku.html" />
     
 
     </head>
@@ -127,7 +127,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="taking_care_of_the_environment.html">
+        <li class="chapter " data-level="1.4" data-path="adding_a_page.html">
+            
+                <a href="adding_a_page.html">
+            
+                    
+                    Adding a page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="handling_static_files.html">
+            
+                <a href="handling_static_files.html">
+            
+                    
+                    handling_staticfiles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="taking_care_of_the_environment.html">
             
                 <a href="taking_care_of_the_environment.html">
             
@@ -140,7 +166,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="connecting_the_database.html">
+        <li class="chapter " data-level="1.7" data-path="connecting_the_database.html">
             
                 <a href="connecting_the_database.html">
             
@@ -153,7 +179,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="pushing_to_gitlab.html">
+        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+            
+                <a href="preparing_heroku.html">
+            
+                    
+                    Preparing Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="pushing_to_gitlab.html">
             
                 <a href="pushing_to_gitlab.html">
             
@@ -166,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="building_our_pipeline.html">
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
             
                 <a href="building_our_pipeline.html">
             
@@ -179,12 +218,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="autodeploy_to_heroku.html">
+        <li class="chapter " data-level="1.11" data-path="autodeploy_to_heroku.html">
             
                 <a href="autodeploy_to_heroku.html">
             
                     
-                    Autodeploy to heroku
+                    Autodeploy to Heroku
             
                 </a>
             
@@ -241,13 +280,13 @@
 <h2 id="_pushing_to_gitlab">Pushing to GitLab</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>So far we only have worked locally.
+<p>So far we have only worked locally.
 In this chapter we will create a remote repository on GitLab to push our code to.</p>
 </div>
 <div class="sect2">
 <h3 id="_creating_the_gitlab_project">Creating the GitLab project</h3>
 <div class="paragraph">
-<p>Gitlab has the functionality to create a new project by non-existant repositories by <a href="https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project" target="_blank"><em>just pushing to them</em></a>.
+<p>GitLab has the functionality to create a new project by non-existant repositories by <a href="https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project" target="_blank"><em>just pushing to them</em></a>.
 The repository is set to <em>private</em> by default.
 You can change that in the GitLab <a href="https://docs.gitlab.com/ee/public_access/public_access.html#how-to-change-project-visibility" target="_blank">project settings</a>.</p>
 </div>
@@ -258,7 +297,7 @@ You can change that in the GitLab <a href="https://docs.gitlab.com/ee/public_acc
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you feel more comfortable to <a href="https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project" target="_blank">use the GitLab website</a>, that’s fine to.
+If you feel more comfortable to <a href="https://docs.gitlab.com/ee/gitlab-basics/create-project.html#push-to-create-a-new-project" target="_blank">use the GitLab website</a>, that’s fine too.
 Just make sure the remote repository is empty, so we can push to it without  pulling it first and maybe even running into merge conflicts.
 </td>
 </tr>
@@ -291,7 +330,7 @@ git remote add origin git@gitlab.com:{username}/djangoku.git</code></pre>
 <div class="paragraph">
 <p>Since our project is still missing a Readme file, now is finally the time to create one.
 Feel free to add any content you want to the Readme file.
-Just make sure to nor add any sensitive data to it, as it will be tracked by Git and may be exposed to the public.</p>
+Do not add any sensitive data to it, as it will be tracked by Git and may be exposed to the public.</p>
 </div>
 <div class="paragraph">
 <p>Create a <em>Readme.md</em> file:</p>
@@ -299,7 +338,7 @@ Just make sure to nor add any sensitive data to it, as it will be tracked by Git
 <div class="listingblock">
 <div class="title">Terminal</div>
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">echo &quot;#Djangoku&quot; &gt; Readme.md</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">echo &quot;# djangoku&quot; &gt; Readme.md</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -315,7 +354,7 @@ Just make sure to nor add any sensitive data to it, as it will be tracked by Git
 <p>Now we can stage, commit and push it to GitLab:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add .
 git commit -m &quot;Add Readme 🐌&quot;
@@ -378,7 +417,7 @@ git push origin master</code></pre>
 
             
                 
-                <a href="connecting_the_database.html" class="navigation navigation-prev " aria-label="Previous page: Connecting the database">
+                <a href="preparing_heroku.html" class="navigation navigation-prev " aria-label="Previous page: Preparing Heroku">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -394,7 +433,7 @@ git push origin master</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Pushing To GitLab","level":"1.6","depth":1,"next":{"title":"Building Our Pipeline","level":"1.7","depth":1,"path":"chapters/building_our_pipeline.adoc","ref":"chapters/building_our_pipeline.adoc","articles":[]},"previous":{"title":"Connecting the database","level":"1.5","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/pushing_to_gitlab.adoc","mtime":"2021-02-06T14:40:43.750Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-06T14:41:09.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Pushing To GitLab","level":"1.9","depth":1,"next":{"title":"Building Our Pipeline","level":"1.10","depth":1,"path":"chapters/building_our_pipeline.adoc","ref":"chapters/building_our_pipeline.adoc","articles":[]},"previous":{"title":"Preparing Heroku","level":"1.8","depth":1,"path":"chapters/preparing_heroku.adoc","ref":"chapters/preparing_heroku.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/pushing_to_gitlab.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

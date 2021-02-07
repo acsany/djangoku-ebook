@@ -56,7 +56,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="taking_care_of_the_environment.html" />
+    <link rel="next" href="adding_a_page.html" />
     
     
     <link rel="prev" href="what_you_need_to_start.html" />
@@ -127,7 +127,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="taking_care_of_the_environment.html">
+        <li class="chapter " data-level="1.4" data-path="adding_a_page.html">
+            
+                <a href="adding_a_page.html">
+            
+                    
+                    Adding a page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="handling_static_files.html">
+            
+                <a href="handling_static_files.html">
+            
+                    
+                    handling_staticfiles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="taking_care_of_the_environment.html">
             
                 <a href="taking_care_of_the_environment.html">
             
@@ -140,7 +166,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="connecting_the_database.html">
+        <li class="chapter " data-level="1.7" data-path="connecting_the_database.html">
             
                 <a href="connecting_the_database.html">
             
@@ -153,7 +179,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="pushing_to_gitlab.html">
+        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+            
+                <a href="preparing_heroku.html">
+            
+                    
+                    Preparing Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="pushing_to_gitlab.html">
             
                 <a href="pushing_to_gitlab.html">
             
@@ -166,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="building_our_pipeline.html">
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
             
                 <a href="building_our_pipeline.html">
             
@@ -179,12 +218,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="autodeploy_to_heroku.html">
+        <li class="chapter " data-level="1.11" data-path="autodeploy_to_heroku.html">
             
                 <a href="autodeploy_to_heroku.html">
             
                     
-                    Autodeploy to heroku
+                    Autodeploy to Heroku
             
                 </a>
             
@@ -249,13 +288,13 @@ Then we will add Django to the mix.</p>
 <h3 id="_beginning_with_the_basics">Beginning with the basics</h3>
 <div class="paragraph">
 <p>Git will keep track of our file versioning and will be our gateway to distribute the files to GitLab and Heroku later.
-By using a virtual environment we have an isolated sandbox and don’t get confused with Python versions and modules that may be installed on the operating system already.
+By using a virtual environment we have an isolated sandbox avoiding confusion with Python versions and modules that may be installed on the operating system already.
 Both Git and a virtual environment are mandatory for a streamlined Heroku workflow.
 But it is generally a good practice to start any Python projects that way.</p>
 </div>
 <div class="paragraph">
-<p>In this book the project will be called <em>&quot;djangoku_dev&quot;</em> and you will see that the root path to the project is <code>~/Dropbox/GitMac/djangoku/djangoku_dev</code>.
-Obviously you will have your custom root path and maybe a more suitable project name –– Keep in mind that you have to adjust some commands accordingly.</p>
+<p>In this book the project will be called <em>&quot;djangoku_dev&quot;</em> and you will see that the root path to the project is <code>djangoku_dev</code>.
+Obviously you will have your custom path and maybe a more suitable project name – Keep in mind that you have to adjust some commands accordingly.</p>
 </div>
 <div class="sect3">
 <h4 id="_create_the_project_folder">Create the project folder</h4>
@@ -265,8 +304,8 @@ Obviously you will have your custom root path and maybe a more suitable project 
 <div class="listingblock">
 <div class="title">Terminal (any window)</div>
 <div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">mkdir ~/Dropbox/GitMac/djangoku/djangoku_dev
-cd ~/Dropbox/GitMac/djangoku/djangoku_dev</code></pre>
+<pre class="highlight"><code class="language-shell" data-lang="shell">mkdir djangoku_dev
+cd djangoku_dev</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -289,7 +328,7 @@ Create the project folder in the Finder, open a new Terminal window, write <code
 <p>Initiate a new Git repository:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git init</code></pre>
 </div>
@@ -302,9 +341,9 @@ Create the project folder in the Finder, open a new Terminal window, write <code
 </td>
 <td class="content">
 It is <a href="https://tom.preston-werner.com/2010/08/23/readme-driven-development.html" target="_blank">a good idea</a> to create a Readme file at the beginning of a project.
-We will create this file later in chapter X when we push our repository to GitLab.
+We will create this file later when we push our repository to GitLab.
 Feel free to create it now and add information along the way.
-Just be careful to not add any sensitive data to it.
+Do not add any sensitive data to it.
 </td>
 </tr>
 </table>
@@ -332,25 +371,25 @@ You can name your virtual environment any way you want and adjust the commands a
 <p>Create a new virtualenvironment in your project folder and activate it:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">python3 -m venv virtualenv
 source virtualenv/bin/activate</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can see that you have activated the virtual environment if the project foldername is wrapped in parenthesis e.g. <em>(virtualenv)</em></p>
+<p>You can see that you have activated the virtual environment if the project foldername is between in parenthesis e.g. <em>(virtualenv)</em></p>
 </div>
 <div class="paragraph">
 <p>This virtual environment folder is needed only locally.
 GitLab and Heroku will create their own environments later.
-Therefore it is important to not track the virtual environment folder with Git.</p>
+Therefore it is important not to track the virtual environment folder with Git.</p>
 </div>
 <div class="paragraph">
 <p>Create a <em>.gitignore</em> file and add <em>virtualenv</em> to it:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">echo virtualenv &gt; .gitignore</code></pre>
 </div>
@@ -365,10 +404,10 @@ Therefore it is important to not track the virtual environment folder with Git.<
 <p>Stage all changed files – that’s just the <em>.gitignore</em> file as we ignored everything else – and commit them:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add .
-git commit -m &quot;Start Djangoku 🌱&quot;</code></pre>
+git commit -m &quot;Start djangoku 🌱&quot;</code></pre>
 </div>
 </div>
 </div>
@@ -381,13 +420,13 @@ git commit -m &quot;Start Djangoku 🌱&quot;</code></pre>
 <div class="sect3">
 <h4 id="_install_django">Install Django</h4>
 <div class="paragraph">
-<p>Make sure the virtualenvironment is still activated by checking if the project folder is wrapped in parenthesis.</p>
+<p>Make sure the virtualenvironment is still activated by checking if the project folder is between in parenthesis.</p>
 </div>
 <div class="paragraph">
 <p>Install the Django module:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">pip install django</code></pre>
 </div>
@@ -400,14 +439,10 @@ git commit -m &quot;Start Djangoku 🌱&quot;</code></pre>
 Note that the command has a <code>.</code> at the end – this will make sure we create the Django project in the current directory and not create a new one.</p>
 </div>
 <div class="paragraph">
-<p>In this book the Django project will be called <em>djangoku</em>.
-You can call your django project differently and adjust the commands accordingly.</p>
-</div>
-<div class="paragraph">
 <p>Start the Django project:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">django-admin.py startproject djangoku .</code></pre>
 </div>
@@ -419,7 +454,7 @@ You can call your django project differently and adjust the commands accordingly
 <p>Run Django:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py runserver</code></pre>
 </div>
@@ -437,9 +472,9 @@ Open this in your browser and see if Django is running successfully.</p>
 <div class="paragraph">
 <p>Django creates an SQLite database automatically.
 That’s the <em>db.sqlite3</em> file in the root folder.
-We will not need this file and delete it later, because we will work with a PostgreSQL database.
+We will not need this file and will delete it later, because we will work with a PostgreSQL database.
 For now it is enough to not track the database file and add it to <em>.gitignore</em>.
-If we would only delete it without declaring an alternative database at the same time, Django just recreates <em>db.sqlite3</em> everytime the server runs.</p>
+When deleted without declaring an alternative database at the same time, Django just recreates <em>db.sqlite3</em> everytime the server runs.</p>
 </div>
 <div class="paragraph">
 <p>Note that the command has two <code>&gt;</code>, because we want to append a line to the <em>.gitignore</em> file.</p>
@@ -458,7 +493,7 @@ Even then you should <a href="https://github.com/github/gitignore/blob/db0ef78b5
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">echo *.sqlite3 &gt;&gt; .gitignore</code></pre>
 </div>
@@ -470,7 +505,7 @@ Even then you should <a href="https://github.com/github/gitignore/blob/db0ef78b5
 <p>Track the new files in Git:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add .
 git commit -m &quot;Add Django project 🤠&quot;</code></pre>
@@ -483,7 +518,7 @@ git commit -m &quot;Add Django project 🤠&quot;</code></pre>
 <div class="paragraph">
 <p>As long as we don’t push anything to the server we don’t have to bother that much about dependencies.
 Still this is a good moment to freeze the Python modules we are using at this stage into a <em>requirements.txt</em> file.
-With this file in our repository, GitLab and heroku will automatically install the exact versions of Python modules we use in their environment.</p>
+With this file in our repository, GitLab and Heroku will automatically install the exact versions of Python modules we use in their environment.</p>
 </div>
 <div class="paragraph">
 <p>Let’s create and fill the <em>requirements.txt</em> in one go:</p>
@@ -498,7 +533,7 @@ With this file in our repository, GitLab and heroku will automatically install t
 <p>Stage and commit <em>requirements.txt</em>:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add requirements.txt
 git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
@@ -507,13 +542,10 @@ git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_checklist">Checklist</h3>
-<div class="paragraph">
-<p><strong>Objective</strong>: The project is tracked via Git and Django is present in an activated virtual environment.</p>
-</div>
 <div class="sect3">
 <h4 id="_project_is_tracked_via_git">✔︎ Project is tracked via Git</h4>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git log</code></pre>
 </div>
@@ -525,14 +557,14 @@ git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
 <div class="sect3">
 <h4 id="_virtual_environment_is_activated">✔︎ Virtual environment is activated</h4>
 <div class="paragraph">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <p>→ The root project folder is wrapped in parenthesis in the Terminal.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_virtual_environment_uses_the_correct_python">✔︎ Virtual environment uses the correct Python</h4>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">which python</code></pre>
 </div>
@@ -544,7 +576,7 @@ git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
 <div class="sect3">
 <h4 id="_django_is_installed">✔︎ Django is installed</h4>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">python -m django --version</code></pre>
 </div>
@@ -594,7 +626,7 @@ git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
                 </a>
                 
                 
-                <a href="taking_care_of_the_environment.html" class="navigation navigation-next " aria-label="Next page: Taking care of the Environment">
+                <a href="adding_a_page.html" class="navigation navigation-next " aria-label="Next page: Adding a page">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -605,7 +637,7 @@ git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Starting the project","level":"1.3","depth":1,"next":{"title":"Taking care of the Environment","level":"1.4","depth":1,"path":"chapters/taking_care_of_the_environment.adoc","ref":"chapters/taking_care_of_the_environment.adoc","articles":[]},"previous":{"title":"What you need to start","level":"1.2","depth":1,"path":"chapters/what_you_need_to_start.adoc","ref":"chapters/what_you_need_to_start.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/starting_the_project.adoc","mtime":"2021-02-06T14:40:43.750Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-06T14:41:09.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Starting the project","level":"1.3","depth":1,"next":{"title":"Adding a page","level":"1.4","depth":1,"path":"chapters/adding_a_page.adoc","ref":"chapters/adding_a_page.adoc","articles":[]},"previous":{"title":"What you need to start","level":"1.2","depth":1,"path":"chapters/what_you_need_to_start.adoc","ref":"chapters/what_you_need_to_start.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/starting_the_project.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -56,7 +56,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="pushing_to_gitlab.html" />
+    <link rel="next" href="preparing_heroku.html" />
     
     
     <link rel="prev" href="taking_care_of_the_environment.html" />
@@ -127,7 +127,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="taking_care_of_the_environment.html">
+        <li class="chapter " data-level="1.4" data-path="adding_a_page.html">
+            
+                <a href="adding_a_page.html">
+            
+                    
+                    Adding a page
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="handling_static_files.html">
+            
+                <a href="handling_static_files.html">
+            
+                    
+                    handling_staticfiles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="taking_care_of_the_environment.html">
             
                 <a href="taking_care_of_the_environment.html">
             
@@ -140,7 +166,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="connecting_the_database.html">
+        <li class="chapter active" data-level="1.7" data-path="connecting_the_database.html">
             
                 <a href="connecting_the_database.html">
             
@@ -153,7 +179,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="pushing_to_gitlab.html">
+        <li class="chapter " data-level="1.8" data-path="preparing_heroku.html">
+            
+                <a href="preparing_heroku.html">
+            
+                    
+                    Preparing Heroku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="pushing_to_gitlab.html">
             
                 <a href="pushing_to_gitlab.html">
             
@@ -166,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="building_our_pipeline.html">
+        <li class="chapter " data-level="1.10" data-path="building_our_pipeline.html">
             
                 <a href="building_our_pipeline.html">
             
@@ -179,12 +218,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="autodeploy_to_heroku.html">
+        <li class="chapter " data-level="1.11" data-path="autodeploy_to_heroku.html">
             
                 <a href="autodeploy_to_heroku.html">
             
                     
-                    Autodeploy to heroku
+                    Autodeploy to Heroku
             
                 </a>
             
@@ -242,13 +281,13 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Every environment will have their own database.
-On heroku, the database will be created automatically.
+On Heroku, the database will be created automatically.
 Locally we have to create the database on our own.</p>
 </div>
 <div class="sect2">
 <h3 id="_creating_the_local_postgrsql_database">Creating the local PostgrSQL database</h3>
 <div class="paragraph">
-<p>As described in Chapter X, we ignored the SQLite database to create or own PostgreSQL database.
+<p>As described before, we ignored the SQLite database to create our own PostgreSQL database.
 So let’s do this.</p>
 </div>
 <div class="paragraph">
@@ -274,7 +313,7 @@ If the <code>psql</code> command fails, you may have forgotten to start the Post
 </div>
 <div class="paragraph">
 <p>You can use your own database name.
-I like to use a database name that is a combination out of the project name and the environment.
+I like to use a database name that is a combination of the project name and the environment.
 That way it is easy to find it when there are multiple databases.
 And it is clear which environment the database is meant for.</p>
 </div>
@@ -312,8 +351,10 @@ Do not forget the <code>;</code> at the end
 <div class="sect2">
 <h3 id="_adding_database_modules">Adding database modules</h3>
 <div class="paragraph">
-<p>For Django and heroku to be able work with PostgrSQL databases, we need two additional modules.
-<code>psycopg2</code> is a database adapter, that enables Django to <em>talk</em> to the PostgreSQL database.
+<p>For Django and Heroku to be able work with PostgrSQL databases, we need two additional modules.</p>
+</div>
+<div class="paragraph">
+<p><code>psycopg2</code> is a database adapter, that enables Django to <em>talk</em> to the PostgreSQL database.
 <code>dj-database-url</code> allows us to use database urls.
 This is not important in our local environment, but will be on Heroku.
 Heroku stores the database url in an environment URL, that we access in the Django settings.</p>
@@ -347,7 +388,7 @@ Heroku stores the database url in an environment URL, that we access in the Djan
 <div class="paragraph">
 <p>Finally we can get rid of the <em>db.sqlite3</em> database.
 Just make sure that you first follow the steps to add the PostgreSQL databas below, before restarting the Django server.
-Otherwise Django will just recreate the file.</p>
+If you don’t Django will just recreate the file.</p>
 </div>
 <div class="listingblock">
 <div class="title">Terminal</div>
@@ -371,20 +412,50 @@ It will look like this:
 <div class="paragraph">
 <p>Before we add it to the <em>.env</em> file, let’s look at the segments of the <code>DATABSE_URL</code>:</p>
 </div>
-<div class="paragraph">
-<p>| Segment | Info | Default value |
-|---|---|---|
-| <code>user</code> | The user you want to connect with to the database| <code>postgres</code> |
-| <code>password</code> | The password for the user | <code>` (no password) |
-| `host_name</code> | The database host | <code>localhost</code> |
-| <code>port</code> | The database port | <code>5432</code> |
-| <code>database_name</code> | The database name you chose before | <code>djangoku_local</code> |</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Segment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>user</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user you want to connect with to the database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>postgres</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The password for the user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">` ` <em>(no password)</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>host_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The database host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The database port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5432</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>database_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The database name you chose before</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>djangoku_local</code></p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>Let’s combine the segments to a functional url and add it to <em>.env</em>:</p>
 </div>
 <div class="listingblock">
-<div class="title">&apos;.env&apos;</div>
+<div class="title">.env</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">export DATABASE_URL=postgres://postgres@localhost:5432/djangoku_local</code></pre>
 </div>
@@ -439,7 +510,7 @@ If it does, you need to check your settings again.
 <p>Now we can stage and commit all changes:</p>
 </div>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git add .
 git commit -m &quot;Connect PostgreSQL database 🗄&quot;</code></pre>
@@ -495,7 +566,7 @@ settings.DATABASES[&apos;default&apos;]</code></pre>
 <div class="sect3">
 <h4 id="_django_runs_correctly">✔︎ Django runs correctly</h4>
 <div class="listingblock">
-<div class="title">Terminal (same window)</div>
+<div class="title">Terminal</div>
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">python manage.py runserver</code></pre>
 </div>
@@ -538,7 +609,7 @@ settings.DATABASES[&apos;default&apos;]</code></pre>
                 </a>
                 
                 
-                <a href="pushing_to_gitlab.html" class="navigation navigation-next " aria-label="Next page: Pushing To GitLab">
+                <a href="preparing_heroku.html" class="navigation navigation-next " aria-label="Next page: Preparing Heroku">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -549,7 +620,7 @@ settings.DATABASES[&apos;default&apos;]</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Connecting the database","level":"1.5","depth":1,"next":{"title":"Pushing To GitLab","level":"1.6","depth":1,"path":"chapters/pushing_to_gitlab.adoc","ref":"chapters/pushing_to_gitlab.adoc","articles":[]},"previous":{"title":"Taking care of the Environment","level":"1.4","depth":1,"path":"chapters/taking_care_of_the_environment.adoc","ref":"chapters/taking_care_of_the_environment.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/connecting_the_database.adoc","mtime":"2021-02-06T14:40:43.750Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-06T14:41:09.438Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Connecting the database","level":"1.7","depth":1,"next":{"title":"Preparing Heroku","level":"1.8","depth":1,"path":"chapters/preparing_heroku.adoc","ref":"chapters/preparing_heroku.adoc","articles":[]},"previous":{"title":"Taking care of the Environment","level":"1.6","depth":1,"path":"chapters/taking_care_of_the_environment.adoc","ref":"chapters/taking_care_of_the_environment.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/connecting_the_database.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
