@@ -1,7 +1,7 @@
 == Adding a page
 
 Currently we see a placeholder page when we visit the Django project in the browser.
-As wireframe for future additions, let’s create a minimal app in Django.
+As a wireframe for future additions, let’s create a minimal app in Django.
 
 The app will serve a welcome page when visiting the root of our project and contain some styling.
 With the welcome page we can see if Django works correctly even when the debug mode is deactivated.
@@ -109,16 +109,16 @@ The repetition of the app name in the path of the template is to prevent confusi
 Add content to the _welcome_ template:
 
 .pages/templates/pages/welcome.html
-[source, Python]
+[source, HTML]
 ----
-{% load static %}
+{​% load static %}
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>djangoku</title>
-    <link rel="stylesheet" href="{% static 'css/pages.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{​% static 'css/pages.css' %}" type="text/css" />
 
 </head>
 
@@ -127,6 +127,10 @@ Add content to the _welcome_ template:
 </body>
 </html>
 ----
+
+[IMPORTANT]
+Do not just copy paste the text from above.
+Because of rendering reasons there are non visible _zero-width spaces_ between `{` and `%`.
 
 === Add the CSS file
 

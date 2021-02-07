@@ -113,32 +113,9 @@ ALLOWED_HOSTS = [
 ----
 
 
-=== Add `django-heroku`
-
-With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
-Especially the handling of settings, static files and logging is much easier with it.
-All required dependencies are downloaded automatically for us.
-
-Install `django-heroku`:
-
-.Terminal
-[source, shell]
-----
-pip install django-heroku
-----
-
-Add it to our _settings.py_ file:
-
-.djangoku/settings.py (At the bottom of the file)
-[source, Python]
-----
-import django_heroku
-django_heroku.settings(locals())
-----
-
 === Update our requirements
 
-Now that we have two new modules in our project, let’s update our requirements.
+Now that we have a new module in our project, let’s update our requirements.
 
 Update _requirements.txt_:
 

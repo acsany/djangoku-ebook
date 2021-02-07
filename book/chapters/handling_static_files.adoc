@@ -6,19 +6,6 @@ The https://devcenter.heroku.com/articles/s3[adviced solution] is to store the f
 For prototypes or smaller projects it is easier to let Django serve the static files on production as well.
 While Django handles static files locally just fine, the Heroku app needs a bit of configuration.
 
-=== Add static files settings
-
-Unless otherwise configured, Heroku lo`collects static files when building the app.
-In order to run `collectstatic` succesfully, we need to enhance the settings.
-
-Add `STATIC_ROOT` and `STATICFILES_DIRS` to _djangoku/settings.py_
-
-.djangoku/settings.py (At the end of the file)
-[source, Python]
-----
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-----
-
 === Add `django-heroku`
 
 With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
