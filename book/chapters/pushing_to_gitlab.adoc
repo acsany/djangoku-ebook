@@ -43,7 +43,7 @@ Create a _Readme.md_ file:
 .Terminal
 [source, shell]
 ----
-echo "#Djangoku" > Readme.md
+echo "# djangoku" > Readme.md
 ----
 
 [INFO]
