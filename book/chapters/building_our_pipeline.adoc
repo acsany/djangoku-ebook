@@ -94,9 +94,9 @@ pip freeze > requirements.txt
 
 Now that our Heroku requirements are fulfilled, we need to tell GitLab to deploy our code to Heroku on push.
 We do this by adding a CI/CD pipeline to our remote repository.
-GitLab creates this pipeline automatically when a `gitlab-ci.yml` file is present in the root of the repository.
+GitLab creates this pipeline automatically when a `.gitlab-ci.yml` file is present in the root of the repository.
 
-Our `gitlab-ci.yml` contain instructions about connecting with Heroku.
+Our `.gitlab-ci.yml` contain instructions about connecting with Heroku.
 The authorization will be done by an env variable named `HEROKU_PRODUCTION_API_KEY`.
 
 ==== Get your Heroku API key
@@ -125,19 +125,22 @@ To add custom env variables to your GitLab repo, we must go to the settings of o
 [IMPORTANT]
 You may need to delete the newline the auth token, when you used `pbcopy` to add it to your clipboard.
 
-==== Create the _gitlab-ci.yml_ file
+==== Create the _.gitlab-ci.yml_ file
 
 Back in the terminal, create the _gitlab-ci.yml_ file:
 
 .Terminal
 [source, shell]
 ----
-touch gitlab-ci.yml
+touch -gitlab-ci.yml
 ----
 
-Add the Heroku deploy stage to the _gitlab-ci.yml_ file:
+[IMPORTANT]
+Don’t forget the `.` at the beginning of the file name.
 
-.gitlab-ci.yml
+Add the Heroku deploy stage to the _.gitlab-ci.yml_ file:
+
+..gitlab-ci.yml
 [source,yaml]
 ---
 // Important: Change {appname} to your Heroku app name
@@ -151,7 +154,7 @@ heroku:
 ---
 
 [NOTE]
-This is a very basic example of a _gitlab-ci.yml_ file.
+This is a very basic example of a _.gitlab-ci.yml_ file.
 Feel free to let it run tests or only deploy if you push to a specific branch.
 
 See the https://docs.gitlab.com/ee/ci/README.html[GitLab CI/CD documentation] for more information.
@@ -159,7 +162,7 @@ See the https://docs.gitlab.com/ee/ci/README.html[GitLab CI/CD documentation] fo
 
 === Committing the code
 
-If you run `git status` you will see, that we updated _requirements.txt_, and added _Procfile_ and _gitlab-ci.yml_.
+If you run `git status` you will see, that we updated _requirements.txt_, and added _Procfile_ and _.gitlab-ci.yml_.
 
 Now we can stage and commit our changes:
 
@@ -190,4 +193,4 @@ heroku apps
 
 ==== ✔︎ django-heroku is part of requirements
 
-==== ✔︎ gitlab-ci.yml is present
+==== ✔︎ .gitlab-ci.yml is present
