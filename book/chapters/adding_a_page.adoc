@@ -111,14 +111,15 @@ Add content to the _welcome_ template:
 .pages/templates/pages/welcome.html
 [source, HTML]
 ----
-{​% load static %}
+{% raw %}
+{% load static %}
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>djangoku</title>
-    <link rel="stylesheet" href="{​% static 'css/pages.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/pages.css' %}" type="text/css" />
 
 </head>
 
@@ -126,11 +127,8 @@ Add content to the _welcome_ template:
     <h1>{{welcome_msg}}</h1>
 </body>
 </html>
+{% endraw %}
 ----
-
-[IMPORTANT]
-Do not just copy paste the text from above.
-Because of rendering reasons there are non visible _zero-width spaces_ between `{` and `%`.
 
 === Add the CSS file
 
