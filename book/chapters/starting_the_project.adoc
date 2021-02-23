@@ -13,7 +13,7 @@ By using a virtual environment we have an isolated sandbox avoiding confusion wi
 Both Git and a virtual environment are mandatory for a streamlined Heroku workflow.
 But it is generally a good practice to start any Python projects that way.
 
-[INFO]
+[CAUTION]
 In this book the project will be called _"djangoku_dev"_ and you will see that the root path to the project is `djangoku_dev`.
 Obviously you will have your custom path and maybe a more suitable project name – Keep in mind that you have to adjust some commands accordingly.
 
@@ -51,10 +51,10 @@ Do not add any sensitive data to it.
 
 ==== Create the virtual environment
 
-[NOTE]
+[TIP]
 If you are confused about virtual environments (as I still am sometimes), check out this great article on https://realpython.com/python-virtual-environments-a-primer/[Real Python] to get an overview.
 
-[INFO]
+[CAUTION]
 In this book the virtual environment will be called _virtualenv_.
 You can name your virtual environment any way you want and adjust the commands accordingly.
 

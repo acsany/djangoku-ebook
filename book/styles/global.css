@@ -1,0 +1,27 @@
+
+
+/* Admonition Blocks */
+
+td.content {
+    width: 100%;
+}
+
+.icon-note:before {
+    content: "📌"
+}
+
+.icon-important:before {
+    content: "☝️";
+}
+
+.icon-caution:before {
+    content: "👀";
+}
+
+.icon-warning:before {
+    content: "⚠️";
+}
+
+.icon-tip:before {
+    content: "💡";
+}

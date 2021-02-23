@@ -36,7 +36,7 @@ To add custom env variables to your GitLab repo, we must go to the settings of o
 2. Click the *Add Variable* button.
 3. Add a variable named `HEROKU_API_KEY` with your Heroku API key (see above) as value.
 
-[IMPORTANT]
+[CAUTION]
 You may need to delete the newline the auth token, when you used `pbcopy` to add it to your clipboard.
 
 ==== Create the _.gitlab-ci.yml_ file
@@ -49,7 +49,7 @@ Back in the terminal, create the _gitlab-ci.yml_ file:
 touch -gitlab-ci.yml
 ----
 
-[IMPORTANT]
+[CAUTION]
 Don’t forget the `.` at the beginning of the file name.
 
 Add the Heroku deploy stage to the _.gitlab-ci.yml_ file:

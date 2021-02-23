@@ -46,7 +46,7 @@ Create a _Readme.md_ file:
 echo "# djangoku" > Readme.md
 ----
 
-[INFO]
+[NOTE]
 https://reinteractive.com/posts/137-on-the-importance-of-a-readme[This blog post] by Raphael Campardou lists what makes a good readme file.
 
 === Commit and push updates

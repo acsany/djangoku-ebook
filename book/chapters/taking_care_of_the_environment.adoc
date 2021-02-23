@@ -9,7 +9,7 @@ Important data should not live in your code or be part of the version control.
 That’s where environment variables come in handy.
 Another advantage is, that we can set different values in different environments (hence the name).
 
-[INFO]
+[TIP]
 To learn more about best practices for web apps, check out https://12factor.net/[the twelve-factor methodology]
 
 Locally we will store the environment variables in an _.env_ file.
@@ -101,7 +101,7 @@ The secret key must be a large random value and it must be kept secret.
 ____
 
 
-[INFO]
+[TIP]
 See this (https://stackoverflow.com/a/47117966[_stack overflow_ answer]) to learn more about the purpose of the secret key.
 
 When you have a look in the settings file around _line 23_ you see the current value of Django’s `SECRET_KEY`.

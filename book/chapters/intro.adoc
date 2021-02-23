@@ -11,7 +11,7 @@ With this book I try to provide a concise tutorial on how to deploy Django proje
 Every chapter ends with a checklist.
 Once you’ve completed all steps for a project, you can use the checklists as quick references.
 
-[Note]
+[NOTE]
 When I started learning programming, I often abandonded tutorials and books, because _my_ code didn’t work like the one in the book.
 
 I want you to succeed and finish this book.
