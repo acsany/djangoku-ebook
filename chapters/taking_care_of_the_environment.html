@@ -6,7 +6,7 @@
         <title>Taking care of the Environment · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="HonKit 3.6.16">
+        <meta name="generator" content="HonKit 3.6.17">
         
         
         
@@ -32,6 +32,8 @@
     
 
     
+        
+        <link rel="stylesheet" href="../styles/website.css">
         
     
         
@@ -145,7 +147,7 @@
                 <a href="handling_static_files.html">
             
                     
-                    handling_staticfiles
+                    Handling static files
             
                 </a>
             
@@ -290,8 +292,17 @@ In this chapter we will start to make use of environment variables.</p>
 That’s where environment variables come in handy.
 Another advantage is, that we can set different values in different environments (hence the name).</p>
 </div>
-<div class="paragraph">
-<p>To learn more about best practices for web apps, check out <a href="https://12factor.net/" target="_blank">the twelve-factor methodology</a></p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To learn more about best practices for web apps, check out <a href="https://12factor.net/" target="_blank">the twelve-factor methodology</a>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Locally we will store the environment variables in an <em>.env</em> file.
@@ -420,8 +431,17 @@ Locally we want to continue to see debug messages.</p>
 — Django Documentation, <a href="https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/#secret-key" target="_blank">Deployment Checklist</a>
 </div>
 </div>
-<div class="paragraph">
-<p>See this (<a href="https://stackoverflow.com/a/47117966" target="_blank"><em>stack overflow</em> answer</a>) to learn more about the purpose of the secret key.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+See this (<a href="https://stackoverflow.com/a/47117966" target="_blank"><em>stack overflow</em> answer</a>) to learn more about the purpose of the secret key.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>When you have a look in the settings file around <em>line 23</em> you see the current value of Django’s <code>SECRET_KEY</code>.</p>
@@ -610,7 +630,7 @@ settings.SECRET_KEY == os.getenv(&apos;SECRET_KEY&apos;)</code></pre>
 
             
                 
-                <a href="handling_static_files.html" class="navigation navigation-prev " aria-label="Previous page: handling_staticfiles">
+                <a href="handling_static_files.html" class="navigation navigation-prev " aria-label="Previous page: Handling static files">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -626,7 +646,7 @@ settings.SECRET_KEY == os.getenv(&apos;SECRET_KEY&apos;)</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.6","depth":1,"next":{"title":"Connecting the database","level":"1.7","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"previous":{"title":"handling_staticfiles","level":"1.5","depth":1,"path":"chapters/handling_static_files.adoc","ref":"chapters/handling_static_files.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Taking care of the Environment","level":"1.6","depth":1,"next":{"title":"Connecting the database","level":"1.7","depth":1,"path":"chapters/connecting_the_database.adoc","ref":"chapters/connecting_the_database.adoc","articles":[]},"previous":{"title":"Handling static files","level":"1.5","depth":1,"path":"chapters/handling_static_files.adoc","ref":"chapters/handling_static_files.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/taking_care_of_the_environment.adoc","mtime":"2021-02-23T19:53:42.580Z","type":"asciidoc"},"gitbook":{"version":"3.6.17","time":"2021-02-23T19:54:01.847Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

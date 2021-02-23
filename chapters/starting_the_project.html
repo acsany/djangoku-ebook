@@ -6,7 +6,7 @@
         <title>Starting the project · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="HonKit 3.6.16">
+        <meta name="generator" content="HonKit 3.6.17">
         
         
         
@@ -32,6 +32,8 @@
     
 
     
+        
+        <link rel="stylesheet" href="../styles/website.css">
         
     
         
@@ -145,7 +147,7 @@
                 <a href="handling_static_files.html">
             
                     
-                    handling_staticfiles
+                    Handling static files
             
                 </a>
             
@@ -292,9 +294,18 @@ By using a virtual environment we have an isolated sandbox avoiding confusion wi
 Both Git and a virtual environment are mandatory for a streamlined Heroku workflow.
 But it is generally a good practice to start any Python projects that way.</p>
 </div>
-<div class="paragraph">
-<p>In this book the project will be called <em>&quot;djangoku_dev&quot;</em> and you will see that the root path to the project is <code>djangoku_dev</code>.
-Obviously you will have your custom path and maybe a more suitable project name – Keep in mind that you have to adjust some commands accordingly.</p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+In this book the project will be called <em>&quot;djangoku_dev&quot;</em> and you will see that the root path to the project is <code>djangoku_dev</code>.
+Obviously you will have your custom path and maybe a more suitable project name – Keep in mind that you have to adjust some commands accordingly.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_create_the_project_folder">Create the project folder</h4>
@@ -351,11 +362,11 @@ Do not add any sensitive data to it.
 </div>
 <div class="sect3">
 <h4 id="_create_the_virtual_environment">Create the virtual environment</h4>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 If you are confused about virtual environments (as I still am sometimes), check out this great article on <a href="https://realpython.com/python-virtual-environments-a-primer/" target="_blank">Real Python</a> to get an overview.
@@ -363,9 +374,18 @@ If you are confused about virtual environments (as I still am sometimes), check 
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>In this book the virtual environment will be called <em>virtualenv</em>.
-You can name your virtual environment any way you want and adjust the commands accordingly.</p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+In this book the virtual environment will be called <em>virtualenv</em>.
+You can name your virtual environment any way you want and adjust the commands accordingly.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Create a new virtualenvironment in your project folder and activate it:</p>
@@ -637,7 +657,7 @@ git commit -m &quot;Add current project requirements 📜&quot;</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Starting the project","level":"1.3","depth":1,"next":{"title":"Adding a page","level":"1.4","depth":1,"path":"chapters/adding_a_page.adoc","ref":"chapters/adding_a_page.adoc","articles":[]},"previous":{"title":"What you need to start","level":"1.2","depth":1,"path":"chapters/what_you_need_to_start.adoc","ref":"chapters/what_you_need_to_start.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/starting_the_project.adoc","mtime":"2021-02-07T15:36:10.269Z","type":"asciidoc"},"gitbook":{"version":"3.6.16","time":"2021-02-07T15:36:29.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Starting the project","level":"1.3","depth":1,"next":{"title":"Adding a page","level":"1.4","depth":1,"path":"chapters/adding_a_page.adoc","ref":"chapters/adding_a_page.adoc","articles":[]},"previous":{"title":"What you need to start","level":"1.2","depth":1,"path":"chapters/what_you_need_to_start.adoc","ref":"chapters/what_you_need_to_start.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"chapters/starting_the_project.adoc","mtime":"2021-02-23T19:53:42.580Z","type":"asciidoc"},"gitbook":{"version":"3.6.17","time":"2021-02-23T19:54:01.847Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
