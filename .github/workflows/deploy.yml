@@ -18,6 +18,8 @@ jobs:
         run: |
           npm install
           npx honkit build
+          mkdir _book/pdf
+          npx honkit pdf ./ _book/pdf/djangoku_eBook.pdf
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
