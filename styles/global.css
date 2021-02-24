@@ -1,4 +1,14 @@
+/* Code Blocks */
 
+.listingblock {
+    page-break-inside: avoid;
+}
+
+.listingblock .title {
+    background-color: gainsboro;
+    padding-left: 1rem;
+    font-size: .85em;
+}
 
 /* Admonition Blocks */
 
@@ -7,7 +17,7 @@ td.content {
 }
 
 .icon-note:before {
-    content: "📌"
+    content: "📎"
 }
 
 .icon-important:before {
