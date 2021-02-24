@@ -1,5 +1,7 @@
 @import url('global.css');
 
+/* Code Blocks */
+
 pre > *,
 code > * {
     white-space: normal !important;

@@ -1,5 +1,3 @@
-// Explain the WHY (book and topic)
-
 There are many tutorials on Django.
 But deployment is often not part of it.
 
@@ -12,7 +10,9 @@ Every chapter ends with a checklist.
 Once you’ve completed all steps for a project, you can use the checklists as quick references.
 
 [NOTE]
+====
 When I started learning programming, I often abandonded tutorials and books, because _my_ code didn’t work like the one in the book.
 
 I want you to succeed and finish this book.
 If your code does not work as expected or you encounter a roadblock, don’t hesitate to contact me and I will try to help out.
+====
