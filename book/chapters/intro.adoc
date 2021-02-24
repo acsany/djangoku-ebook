@@ -1,5 +1,3 @@
-// Explain the WHY (book and topic)
-
 There are many tutorials on Django.
 But deployment is often not part of it.
 
