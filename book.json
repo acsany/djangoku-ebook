@@ -3,6 +3,14 @@
     "pdf": {
         "fontSize": 16,
         "fontFamily": "IBMPlexSans",
-        "embedFonts": true
+        "embedFonts": true,
+        "margin": {
+            "right": 0
+        }
+    },
+    "links": {
+        "sidebar": {
+            "Need help? Talk to me!": "https://github.com/acsany/djangoku-ebook/issues"
+        }
     }
 }
