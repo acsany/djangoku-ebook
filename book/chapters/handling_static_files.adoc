@@ -10,7 +10,14 @@ While Django handles static files locally just fine, the Heroku app needs a bit 
 
 With https://github.com/heroku/django-heroku[django-heroku] Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
 Especially the handling of settings, static files and logging is much easier with it.
-All required dependencies are downloaded automatically for us.
+
+PIP grabs all required dependencies when installing `django-heroku`.
+This includes:
+
+* `dj-database-url``
+* `whitenoise`
+* `psycopg2`
+* `django` (We already have this one! 😉)
 
 Install `django-heroku`:
 

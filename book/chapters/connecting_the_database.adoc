@@ -45,7 +45,7 @@ Quit postgres shell:
 \q
 ----
 
-=== Adding database modules
+=== Required database modules
 
 For Django and Heroku to be able work with PostgrSQL databases, we need two additional modules.
 
@@ -54,21 +54,25 @@ For Django and Heroku to be able work with PostgrSQL databases, we need two addi
 This is not important in our local environment, but will be on Heroku.
 Heroku stores the database url in an environment URL, that we access in the Django settings.
 
-Let’s install both packages:
+Luckily we added both modules in the chapter <<Handling static files>> already.
+You can check _requirements.txt_ if they are present and revisit <<Add `django-heroku`>> if not.
 
-.Terminal
-[source, shell]
-----
-pip install psycopg2 dj-database-url
-----
 
-And update our _requirements.txt_ file:
+// Let’s install both packages:
 
-.Terminal
-[source, shell]
-----
-pip freeze > requirements.txt
-----
+// .Terminal
+// [source, shell]
+// ----
+// pip install psycopg2 dj-database-url
+// ----
+
+// And update our _requirements.txt_ file:
+
+// .Terminal
+// [source, shell]
+// ----
+// pip freeze > requirements.txt
+// ----
 
 === Connecting Django and the database
 
