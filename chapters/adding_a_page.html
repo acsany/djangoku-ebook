@@ -327,56 +327,10 @@ With the added styling, we will see if static files are served correctly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_add_urls">Add urls</h3>
-<div class="paragraph">
-<p>Now that the <em>pages</em> app is present, we need to tell Django that we want to serve the <em>pages</em> urls on root level.</p>
-</div>
-<div class="paragraph">
-<p>Include <code>pages.urls</code> to <code>urlpatterns</code> of the main <em>djangoku</em> urls file:</p>
-</div>
-<div class="listingblock">
-<div class="title">djangoku/urls.py</div>
-<div class="content">
-<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
-<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> include, path
-
-<span class="hljs-comment"># Do not forget to import `include` from django.urls</span>
-urlpatterns = [
-    path(<span class="hljs-string">&apos;admin/&apos;</span>, admin.site.urls),
-    path(<span class="hljs-string">&apos;&apos;</span>, include(<span class="hljs-string">&apos;pages.urls&apos;</span>))
-]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create an urls file for the <em>pages</em> app:</p>
-</div>
-<div class="listingblock">
-<div class="title">Terminal</div>
-<div class="content">
-<pre class="highlight"><code class="language-shell" data-lang="shell">touch pages/urls.py</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Add <code>welcome</code> path to <em>urls.py</em>:</p>
-</div>
-<div class="listingblock">
-<div class="title">pages/urls.py</div>
-<div class="content">
-<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
-
-<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
-
-urlpatterns = [
-    path(<span class="hljs-string">&apos;&apos;</span>, views.welcome, name=<span class="hljs-string">&apos;welcome&apos;</span>),
-]</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_add_welcome_view">Add welcome view</h3>
 <div class="paragraph">
-<p>The root of our project now directs to the <em>welcome</em> view.
-This view does not exist yet; let’s create it!</p>
+<p>A basic view receives a request, handles it and returns a response.
+In this case we want to display a welcome page with a message.</p>
 </div>
 <div class="paragraph">
 <p>Add <code>welcome</code> function to <em>pages/views.py</em></p>
@@ -478,6 +432,56 @@ touch pages/static/css/pages.css</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_add_urls">Add urls</h3>
+<div class="paragraph">
+<p>We now have a view that renders a template with styling.
+But we have not defined, where Django should show this view.
+Therefore need to define two url patterns.
+One for telling the project that we want to serve the <em>pages</em> urls on root level.
+The other for telling the <em>pages</em> app to serve our <em>welcome</em> view when the path is <code>&quot;&quot;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Include <code>pages.urls</code> to <code>urlpatterns</code> of the main <em>djangoku</em> urls file:</p>
+</div>
+<div class="listingblock">
+<div class="title">djangoku/urls.py</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> include, path
+
+<span class="hljs-comment"># Do not forget to import `include` from django.urls</span>
+urlpatterns = [
+    path(<span class="hljs-string">&apos;admin/&apos;</span>, admin.site.urls),
+    path(<span class="hljs-string">&apos;&apos;</span>, include(<span class="hljs-string">&apos;pages.urls&apos;</span>))
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create an urls file for the <em>pages</em> app:</p>
+</div>
+<div class="listingblock">
+<div class="title">Terminal</div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">touch pages/urls.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add <code>welcome</code> path to <em>urls.py</em>:</p>
+</div>
+<div class="listingblock">
+<div class="title">pages/urls.py</div>
+<div class="content">
+<pre class="highlight"><code class="language-Python" data-lang="Python"><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+urlpatterns = [
+    path(<span class="hljs-string">&apos;&apos;</span>, views.welcome, name=<span class="hljs-string">&apos;welcome&apos;</span>),
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_commit_the_code">Commit the code</h3>
 <div class="paragraph">
 <p>Now we can stage and commit our changes:</p>
@@ -545,7 +549,7 @@ git commit -m &quot;Add pages app 📔&quot;</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Adding a page","level":"1.4","depth":1,"next":{"title":"Handling static files","level":"1.5","depth":1,"path":"chapters/handling_static_files.adoc","ref":"chapters/handling_static_files.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.3","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":0,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Need help? Talk to me!":"https://github.com/acsany/djangoku-ebook/issues"}},"gitbook":"*"},"file":{"path":"chapters/adding_a_page.adoc","mtime":"2021-03-08T06:19:35.259Z","type":"asciidoc"},"gitbook":{"version":"3.6.17","time":"2021-03-08T06:19:50.765Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Adding a page","level":"1.4","depth":1,"next":{"title":"Handling static files","level":"1.5","depth":1,"path":"chapters/handling_static_files.adoc","ref":"chapters/handling_static_files.adoc","articles":[]},"previous":{"title":"Starting the project","level":"1.3","depth":1,"path":"chapters/starting_the_project.adoc","ref":"chapters/starting_the_project.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":0,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Need help? Talk to me!":"https://github.com/acsany/djangoku-ebook/issues"}},"gitbook":"*"},"file":{"path":"chapters/adding_a_page.adoc","mtime":"2021-03-08T07:10:22.795Z","type":"asciidoc"},"gitbook":{"version":"3.6.17","time":"2021-03-08T07:10:46.635Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

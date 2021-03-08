@@ -302,8 +302,27 @@ While Django handles static files locally just fine, the Heroku app needs a bit 
 <h3 id="_add_django_heroku">Add <code>django-heroku</code></h3>
 <div class="paragraph">
 <p>With <a href="https://github.com/heroku/django-heroku" target="_blank">django-heroku</a> Heroku provides a handy Python package that helps dealing with configuration settings for Heroku.
-Especially the handling of settings, static files and logging is much easier with it.
-All required dependencies are downloaded automatically for us.</p>
+Especially the handling of settings, static files and logging is much easier with it.</p>
+</div>
+<div class="paragraph">
+<p>PIP grabs all required dependencies when installing <code>django-heroku</code>.
+This includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dj-database-url`</code></p>
+</li>
+<li>
+<p><code>whitenoise</code></p>
+</li>
+<li>
+<p><code>psycopg2</code></p>
+</li>
+<li>
+<p><code>django</code> (We already have this one! 😉)</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Install <code>django-heroku</code>:</p>
@@ -411,7 +430,7 @@ git commit -m &quot;Configure static files handling 📂&quot;</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Handling static files","level":"1.5","depth":1,"next":{"title":"Taking care of the Environment","level":"1.6","depth":1,"path":"chapters/taking_care_of_the_environment.adoc","ref":"chapters/taking_care_of_the_environment.adoc","articles":[]},"previous":{"title":"Adding a page","level":"1.4","depth":1,"path":"chapters/adding_a_page.adoc","ref":"chapters/adding_a_page.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":0,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Need help? Talk to me!":"https://github.com/acsany/djangoku-ebook/issues"}},"gitbook":"*"},"file":{"path":"chapters/handling_static_files.adoc","mtime":"2021-03-08T06:19:35.259Z","type":"asciidoc"},"gitbook":{"version":"3.6.17","time":"2021-03-08T06:19:50.765Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Handling static files","level":"1.5","depth":1,"next":{"title":"Taking care of the Environment","level":"1.6","depth":1,"path":"chapters/taking_care_of_the_environment.adoc","ref":"chapters/taking_care_of_the_environment.adoc","articles":[]},"previous":{"title":"Adding a page","level":"1.4","depth":1,"path":"chapters/adding_a_page.adoc","ref":"chapters/adding_a_page.adoc","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"IBMPlexSans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":0,"left":62,"top":56,"bottom":56},"embedFonts":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Need help? Talk to me!":"https://github.com/acsany/djangoku-ebook/issues"}},"gitbook":"*"},"file":{"path":"chapters/handling_static_files.adoc","mtime":"2021-03-08T07:10:22.795Z","type":"asciidoc"},"gitbook":{"version":"3.6.17","time":"2021-03-08T07:10:46.635Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
