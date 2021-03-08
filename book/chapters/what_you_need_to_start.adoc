@@ -11,7 +11,7 @@ The general steps will be the same, but there might be small differences.
 * Python 3.8+
 * Git
 * PostgreSQL 11+
-* GitLab OR GitHub Account
+* GitLab Account
 * Heroku Account
 
 [NOTE]
