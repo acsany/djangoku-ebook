@@ -30,51 +30,10 @@ INSTALLED_APPS = [
 ]
 ----
 
-=== Add urls
-
-Now that the _pages_ app is present, we need to tell Django that we want to serve the _pages_ urls on root level.
-
-Include `pages.urls` to `urlpatterns` of the main _djangoku_ urls file:
-
-.djangoku/urls.py
-[source, Python]
-----
-from django.contrib import admin
-from django.urls import include, path
-
-# Do not forget to import `include` from django.urls
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('pages.urls'))
-]
-----
-
-Create an urls file for the _pages_ app:
-
-.Terminal
-[source, shell]
-----
-touch pages/urls.py
-----
-
-Add `welcome` path to _urls.py_:
-
-.pages/urls.py
-[source, Python]
-----
-from django.urls import path
-
-from . import views
-
-urlpatterns = [
-    path('', views.welcome, name='welcome'),
-]
-----
-
 === Add welcome view
 
-The root of our project now directs to the _welcome_ view.
-This view does not exist yet; let’s create it!
+A basic view receives a request, handles it and returns a response.
+In this case we want to display a welcome page with a message.
 
 Add `welcome` function to _pages/views.py_
 
@@ -157,6 +116,53 @@ h1 {
     font-family: monospace;
 }
 ----
+
+=== Add urls
+
+We now have a view that renders a template with styling.
+But we have not defined, where Django should show this view.
+Therefore need to define two url patterns.
+One for telling the project that we want to serve the _pages_ urls on root level.
+The other for telling the _pages_ app to serve our _welcome_ view when the path is `""`.
+
+Include `pages.urls` to `urlpatterns` of the main _djangoku_ urls file:
+
+.djangoku/urls.py
+[source, Python]
+----
+from django.contrib import admin
+from django.urls import include, path
+
+# Do not forget to import `include` from django.urls
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('pages.urls'))
+]
+----
+
+Create an urls file for the _pages_ app:
+
+.Terminal
+[source, shell]
+----
+touch pages/urls.py
+----
+
+Add `welcome` path to _urls.py_:
+
+.pages/urls.py
+[source, Python]
+----
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.welcome, name='welcome'),
+]
+----
+
+
 
 === Commit the code
 
