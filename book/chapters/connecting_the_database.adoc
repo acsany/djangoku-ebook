@@ -4,9 +4,9 @@ Every environment will have their own database.
 On Heroku, the database will be created automatically.
 Locally we have to create the database on our own.
 
-=== Creating the local PostgrSQL database
-// TODO: Add chapter
-As described before, we ignored the SQLite database to create our own PostgreSQL database.
+=== Creating the local PostgreSQL database
+
+As described in <<Ignore the SQLite database>>, we ignored the SQLite database to create our own PostgreSQL database.
 So let’s do this.
 
 Open postgres shell:
@@ -47,7 +47,7 @@ Quit postgres shell:
 
 === Required database modules
 
-For Django and Heroku to be able work with PostgrSQL databases, we need two additional modules.
+For Django and Heroku to be able work with PostgreSQL databases, we need two additional modules.
 
 `psycopg2` is a database adapter, that enables Django to _talk_ to the PostgreSQL database.
 `dj-database-url` allows us to use database urls.
