@@ -46,7 +46,7 @@ Back in the terminal, create the _gitlab-ci.yml_ file:
 .Terminal
 [source, shell]
 ----
-touch -gitlab-ci.yml
+touch .gitlab-ci.yml
 ----
 
 [CAUTION]
