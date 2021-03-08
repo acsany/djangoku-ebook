@@ -182,22 +182,28 @@ psql --list
 ----
 -> `djangoku_local` is present in the database list output.
 
-====  ✔︎ DATABASE_URL is parsed correctly
+====  ✔︎ DATABASE_URL is connected
 
 .Terminal
 [source, shell]
 ----
-python manage.py shell
+python manage.py check --database
 ----
 
-.Terminal
-[source, shell]
-----
-from django.conf import settings
+// .Terminal
+// [source, shell]
+// ----
+// python manage.py shell
+// ----
 
-settings.DATABASES['default']
-----
--> Outputs a dictionary with correct values for `NAME`, `USER`, `HOST`, `PORT`
+// .Terminal
+// [source, shell]
+// ----
+// from django.conf import settings
+
+// settings.DATABASES['default']
+// ----
+// -> Outputs a dictionary with correct values for `NAME`, `USER`, `HOST`, `PORT`
 
 ====  ✔︎ Django runs correctly
 
